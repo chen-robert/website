@@ -1,0 +1,60 @@
+@small-devices: ~"only screen and (max-width: 700px)";
+@logo-animation-duration: 500ms;
+
+@import "colors";
+
+#header{
+  background-color: @theme-black;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  
+  @media @small-devices {
+    background-color: blue;
+  }
+}
+.logo{
+  color: white;
+  &:hover .diagonal{
+    transform: rotate(0deg);
+  }
+  &:hover .logo-text{
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+.logo-text{
+  font-size: 2em;
+  opacity: 0;
+  transition-duration: @logo-animation-duration;
+  
+  transform: translateY(-50px);
+}
+.diagonal{
+  transform: rotate(-45deg);
+  &.opposite{
+    transform: rotate(45deg);
+  }
+  height: 2px;
+  width: 100px;
+  background-color: white;
+  
+  transition-duration: @logo-animation-duration;
+}
+.diagonal-container{
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+html, body{
+  margin: 0;
+  box-sizing: border-box;
+}

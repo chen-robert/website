@@ -1,0 +1,16 @@
+{
+  "name": "personal-website",
+  "version": "1.0.0",
+  "description": "My personal website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "less-watch-compiler src/styles dist main.less"
+  },
+  "author": "Robert Chen",
+  "license": "ISC",
+  "devDependencies": {
+    "less": "^3.8.1",
+    "less-watch-compiler": "^1.11.3"
+  }
+}
