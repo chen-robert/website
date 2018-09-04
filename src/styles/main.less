@@ -1,10 +1,70 @@
 @import "header";
 @import "colors";
+@import "spacing";
 
 #content{
   width: 100%;
+  background-color: #eee;
 }
 
 .row{
+  padding: @theme-spacing;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   
+  width: 100%;
+  height: 100vh;
 }
+
+.col{
+  text-align: center;
+  padding: @theme-spacing;
+}
+
+.scrollable{
+  height: calc(100vh);
+  
+  position: absolute;
+  top: 0;
+  transition-duration: @logo-animation-duration;
+  transform: translateY(0);
+  
+  &.scrolled{
+    transform: translateY(calc(-100vh + @page-offset + @page-height));
+  }
+}
+
+
+html, body{
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+.row{
+  &:nth-child(1){
+    background-color: #eee;
+  }
+  &:nth-child(2){
+    background-color: #ddd;
+  }
+  &:nth-child(3){
+    background-color: #ccc;
+  }
+}
+
+@to: 10;
+.loop(@index, @color) when(@index =< @to) {
+  .row:nth-child(@{index}) {
+    background-color: @color;
+  }
+
+  .loop(@index + 1, darken(@color, 3%));
+}
+
+.loop(0, #eee);
