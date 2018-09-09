@@ -1,5 +1,5 @@
 import $ from "jquery";
-const TIMELINE_BUTTON_DELTA = 350;
+const TIMELINE_BUTTON_FACTOR = 1 / 3;
 
 const MONTHS_OF_YEAR = [
   "Jan",
@@ -83,7 +83,7 @@ const utils = {
         .find("~ .timeline-body .timeline-events")
         .animate(
           {
-            left: `+=${delta * TIMELINE_BUTTON_DELTA}`
+            left: `+=${delta * TIMELINE_BUTTON_FACTOR * $(window).width()}`
           },
           250
         );
