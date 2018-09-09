@@ -28,6 +28,41 @@ const data = {
       }
     ],
     name: "Redpwn"
+  },
+  volunteering: {
+    events: [
+      {
+        date: "8/1/17",
+        title: "Kang Li",
+        desc: "Went to Kang Li to teach English."
+      },
+      {
+        date: "4/1/18",
+        title: "Curriculum",
+        desc: "Designed and created English curriculum. Organized different teaching groups."
+      },
+      {
+        date: "8/1/18",
+        title: "Kang Li",
+        desc: "Went to Kang Li again. Nonprofit group doubled in size."
+      }
+    ],
+    name: "Volunteer Work"
+  },
+  math: {
+    events: [
+      {
+        date: "3/31/16",
+        title: "Mathcounts State",
+        desc: "Individual placed 9th. First placing team."
+      },
+      {
+        date: "3/31/18",
+        title: "JMO",
+        desc: "Qualified for Junior Mathematical Olympiad."
+      }
+    ],
+    name: "Competitive Math"
   }
 };
 
