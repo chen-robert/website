@@ -12,7 +12,7 @@ import timelineUtils from "./timelineUtils";
 
 $(function() {
   Object.keys(data).forEach(key => {
-    $("#content").prepend(timeline(key, key));
+    $("#content").prepend(timeline(key, data[key].name));
 
     const $rootElem = $(`#${key}`);
     const events = data[key].events;
