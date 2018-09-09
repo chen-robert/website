@@ -5,86 +5,86 @@
 
 @timeline-color: #999;
 
-.circle{
+.circle {
   border: 2px solid @timeline-color;
   border-radius: 50%;
   background-color: #eee;
-  
+
   position: absolute;
-  &.left{
+  &.left {
     left: 0;
   }
-  &.right{
+  &.right {
     right: 0;
   }
 }
 
-.timeline{
+.timeline {
   position: relative;
   width: 50vw;
-  
+
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
   user-select: none;
-  
-  & .line{
+
+  & .line {
     height: 1px;
     width: 100%;
     position: absolute;
-    
+
     background-color: @timeline-color;
-    
-    &.alt{
+
+    &.alt {
       transition-duration: @animation-duration;
       width: 10000px;
       height: 2px;
     }
   }
-  
-  & .circle{
+
+  & .circle {
     z-index: 1;
   }
 }
-.timeline-body{
+.timeline-body {
   position: relative;
   overflow: hidden;
   height: 100px;
   width: 100%;
   margin: 0 @timeline-margin;
-  
+
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.event{
+.event {
   position: absolute;
   width: @event-bubble-size;
   height: @event-bubble-size;
   text-align: center;
-  
+
   top: calc(-@event-bubble-size / 2);
-  
+
   transition-duration: @animation-duration;
   background-color: #aaa;
-  &.selected ~ .event{
+  &.selected ~ .event {
     background-color: #eee;
   }
-  &:hover{
+  &:hover {
     background-color: #bbb !important;
   }
-  
-  & .event-date{
+
+  & .event-date {
     position: absolute;
     top: calc(-@event-bubble-size - @event-date-margin);
     left: calc(-2 * @event-date-margin);
   }
 }
 
-.timeline-events{
+.timeline-events {
   position: relative;
 }
-.timeline-desc{
+.timeline-desc {
   text-align: left;
 }

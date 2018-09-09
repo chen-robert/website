@@ -8,6 +8,7 @@
     "build": "webpack --mode=production --devtool=none",
     "dev": "webpack-dev-server",
     "heroku-postbuild": "npm run build",
+    "format": "prettier \"src/**/*\" --write",
     "start": "node app.js"
   },
   "author": "Robert Chen",

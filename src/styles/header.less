@@ -3,7 +3,7 @@
 
 @import "colors";
 
-#header{
+#header {
   position: absolute;
   background-color: @theme-black;
   width: 100%;
@@ -11,40 +11,40 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  
+
   @media @small-devices {
     background-color: blue;
   }
 }
-.logo{
+.logo {
   color: white;
-  &:hover .diagonal{
+  &:hover .diagonal {
     transform: rotate(0deg);
   }
-  &:hover .logo-text{
+  &:hover .logo-text {
     transform: translateY(0px);
     opacity: 1;
   }
 }
-.logo-text{
+.logo-text {
   font-size: 2em;
   opacity: 0;
   transition-duration: @logo-animation-duration;
-  
+
   transform: translateY(-50px);
 }
-.diagonal{
+.diagonal {
   transform: rotate(-45deg);
-  &.opposite{
+  &.opposite {
     transform: rotate(45deg);
   }
   height: 2px;
   width: 100px;
   background-color: white;
-  
+
   transition-duration: @logo-animation-duration;
 }
-.diagonal-container{
+.diagonal-container {
   margin: 0 auto;
   width: 100px;
   height: 100px;

@@ -3,44 +3,44 @@
 @import "colors";
 @import "spacing";
 
-#content{
+#content {
   width: 100%;
   background-color: #eee;
 }
 
-.row{
+.row {
   padding: @theme-spacing;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  
+
   width: 100%;
   height: 100vh;
-  
+
   box-shadow: 0px 10px 10px #ccc;
 }
 
-.col{
+.col {
   text-align: center;
   padding: @theme-spacing;
 }
 
-.scrollable{
+.scrollable {
   height: calc(100vh);
-  
+
   position: absolute;
   top: 0;
   transition-duration: @logo-animation-duration;
   transform: translateY(0);
-  
-  &.scrolled{
+
+  &.scrolled {
     transform: translateY(calc(-100vh + @page-offset + @page-height));
   }
 }
 
-
-html, body{
+html,
+body {
   margin: 0;
 }
 
@@ -54,7 +54,7 @@ html, body{
     background-color: @color;
   }
 
-  .loop(@index + 1, @color);//darken(@color, 3%));
+  .loop(@index + 1, @color); //darken(@color, 3%));
 }
 
 .loop(0, #eee);
