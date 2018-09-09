@@ -1,6 +1,8 @@
 import $ from "jquery";
 const TIMELINE_BUTTON_DELTA = 350;
 
+const MONTHS_OF_YEAR = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
 const utils = {
   create: function($rootElem, events) {
     const baseline = events.map((event) => event.date).reduce((a, b) => Math.min(a, b));
@@ -9,7 +11,14 @@ const utils = {
     events.forEach((event) => {
       //1px per day
       const offset = (event.date - baseline) / (1000 * 60 * 60 * 24);
-      const elem = $.parseHTML(`<div class="event circle" style="left: ${offset}px"></div>`);
+      const time = new Date(event.date);
+      const elem = $.parseHTML(`
+        <div class="event circle" style="left: ${offset}px">
+          <div class="event-date">
+            ${MONTHS_OF_YEAR[time.getMonth()]}&nbsp;${time.getYear() % 100}
+          </div>
+        </div>
+      `);
       $(elem).data("event", event);
       $timelineElem.append(elem);
     });
