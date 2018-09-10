@@ -4,8 +4,8 @@ import "material-icons";
 import $ from "jquery";
 import data from "data";
 
-const PAGE_HEIGHT = 600;
-const PAGE_OFFSET = 50;
+const PAGE_HEIGHT = 250;
+const PAGE_OFFSET = 75;
 
 import timeline from "./timeline";
 import timelineUtils from "./timelineUtils";
