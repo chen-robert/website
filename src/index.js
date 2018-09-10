@@ -4,8 +4,8 @@ import "material-icons";
 import $ from "jquery";
 import data from "data";
 
-const PAGE_HEIGHT = 250;
-const PAGE_OFFSET = 75;
+const PAGE_HEIGHT = 500;
+const PAGE_OFFSET = 100;
 
 import timeline from "./timeline";
 import timelineUtils from "./timelineUtils";
@@ -24,7 +24,7 @@ $(function() {
     const scrollPos = $(document).scrollTop();
 
     $(".scrollable").each((i, elem) => {
-      if (!$(elem).hasClass("last") && scrollPos > (i + 1) * PAGE_HEIGHT) {
+      if (!$(elem).hasClass("last") && scrollPos > 3 * PAGE_OFFSET + (i) * PAGE_HEIGHT) {
         $(elem).addClass("scrolled");
       } else {
         $(elem).removeClass("scrolled");
