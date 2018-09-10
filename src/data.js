@@ -71,4 +71,6 @@ Object.keys(data).forEach(key => {
   events.forEach(event => (event.date = new Date(event.date).valueOf()));
 });
 
+delete data["math"];
+
 export default data;
