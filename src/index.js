@@ -30,7 +30,7 @@ $(function() {
         $(elem).removeClass("scrolled");
       }
 
-      if (scrollPos > i * PAGE_HEIGHT) {
+      if (scrollPos > (i-1) * PAGE_HEIGHT + 3 * PAGE_OFFSET) {
         $(elem).addClass("viewed");
       }
     });

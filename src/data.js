@@ -19,7 +19,7 @@ const data = {
       {
         date: "5/28/18",
         title: "PACTF",
-        desc: "Placed 3rd."
+        desc: "Placed 3rd. Won over $1200 worth of prizes. "
       },
       {
         date: "9/30/18",
@@ -27,50 +27,38 @@ const data = {
         desc: "No information yet."
       }
     ],
-    name: "Redpwn"
+    name: "Cybersecurity"
   },
-  volunteering: {
+  usaco: {
     events: [
       {
-        date: "8/1/17",
-        title: "Kang Li",
-        desc: "Went to Kang Li to teach English."
+        date: "12/28/16",
+        title: "Gold",
+        desc: "Qualified for USACO Gold."
       },
       {
-        date: "4/1/18",
-        title: "Curriculum",
-        desc: "Designed and created English curriculum. Organized different teaching groups."
+        date: "11/18/17",
+        title: "Platinum",
+        desc: "Qualified for USACO Platinum. Top 300 in the nation."
       },
       {
-        date: "8/1/18",
-        title: "Kang Li",
-        desc: "Went to Kang Li again. Nonprofit group doubled in size."
-      }
+        date: "1/28/18",
+        title: "Leetcode",
+        desc: "Ranked 31 out of 2900 participants."
+      },
+      {
+        date: "4/28/18",
+        title: "Codeforces",
+        desc: "Reached Master."
+      },
     ],
-    name: "Volunteer Work"
+    name: "Competitive Programming"
   },
-  math: {
-    events: [
-      {
-        date: "3/31/16",
-        title: "Mathcounts State",
-        desc: "Individual placed 9th. First placing team."
-      },
-      {
-        date: "3/31/18",
-        title: "JMO",
-        desc: "Qualified for Junior Mathematical Olympiad."
-      }
-    ],
-    name: "Competitive Math"
-  }
 };
 
 Object.keys(data).forEach(key => {
   const { events } = data[key];
   events.forEach(event => (event.date = new Date(event.date).valueOf()));
 });
-
-delete data["math"];
 
 export default data;
