@@ -56,6 +56,9 @@ const data = {
   },
 };
 
+delete data.redpwn;
+delete data.usaco;
+
 Object.keys(data).forEach(key => {
   const { events } = data[key];
   events.forEach(event => (event.date = new Date(event.date).valueOf()));

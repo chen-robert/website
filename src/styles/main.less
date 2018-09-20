@@ -24,16 +24,8 @@
   text-align: center;
 }
 
-.panel{
-  width: 33%;
-  
-  @media @small-devices {
-    width: 100%;
-  }
-}
-
 .scrollable {
-  height: calc(100vh);
+  min-height: calc(100vh);
 
   position: absolute;
   top: 0;
@@ -43,6 +35,12 @@
   &.scrolled {
     transform: translateY(calc(-100vh + @page-offset + @page-height));
   }
+}
+
+.heading{
+  width: 100%;
+  text-align: center;	
+  font-size: 2em;
 }
 
 html,
