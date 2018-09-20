@@ -1,4 +1,5 @@
 import "material-icons";
+import "typeface-open-sans";
 import "styles/main.less";
 
 import $ from "jquery";
