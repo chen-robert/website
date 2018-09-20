@@ -11,13 +11,11 @@
 
 .row {
   padding: @theme-spacing;
-  padding-top: calc(2 * @theme-spacing + @page-offset);
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 
   width: 100%;
-  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25), 0px 10px 20px rgba(0, 0, 0, 0.15);
 }
 
 .col {
@@ -25,15 +23,13 @@
 }
 
 .scrollable {
-  min-height: calc(100vh);
-
   position: absolute;
   top: 0;
   transition-duration: @logo-animation-duration;
   transform: translateY(0);
 
   &.scrolled {
-    transform: translateY(calc(-100vh + @page-offset + @page-height));
+    transform: translateY(calc(-100vh));
   }
 }
 
@@ -41,6 +37,10 @@
   width: 100%;
   text-align: center;	
   font-size: 2em;
+}
+
+.lone-icon{
+  font-size: 100px;
 }
 
 html,
@@ -67,7 +67,7 @@ ul{
 @to: 10;
 .loop(@index, @color) when(@index =< @to) {
   .row:nth-child(@{index}) {
-    background-color: @color;
+    background-image: linear-gradient(@color, darken(@color, 3%));
   }
 
   .loop(@index + 1, @color); //darken(@color, 3%));

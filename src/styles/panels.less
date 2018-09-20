@@ -19,10 +19,15 @@
   }
 }
 
+.center-items{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .panel{
   width: 100/2%;
   padding: 0 10%;
-  font-size: 1.25em;
   margin: @theme-spacing 0;
   
   @media @medium-devices {
@@ -30,6 +35,11 @@
   }
   @media @small-devices {
     width: 100%;
+  }
+  
+  &.slim{
+    padding: 0;
+    width: 100/4%;
   }
 }
 
