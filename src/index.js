@@ -5,25 +5,26 @@ import "styles/main.less";
 import $ from "jquery";
 import data from "data";
 
-import timeline from "./timeline";
+import timelineElem from "./timeline";
+import hobbyDescElem from "./hobbyDesc";
 import timelineUtils from "./timelineUtils";
 
 $(function() {
-  Object.keys(data).forEach(key => {
-    $("#content").prepend(timeline(key, data[key].name));
+  Object.keys(data.timeline).forEach(key => {
+    $("#content").prepend(timelineElem(key, data[key].name));
 
     const $rootElem = $(`#${key}`);
     const events = data[key].events;
 
     timelineUtils.create($rootElem, events);
   });
-  
+
   const checkScroll = () => {
     const scrollPos = $(document).scrollTop();
-    
-    if(scrollPos != 0){
+
+    if (scrollPos != 0) {
       $("#header").addClass("scrolled");
-    }else{
+    } else {
       $("#header").removeClass("scrolled");
     }
 
@@ -32,8 +33,12 @@ $(function() {
         $(elem).addClass("viewed");
       }
     });
-  }
+  };
   $(window).scroll(checkScroll);
-  
+
   checkScroll();
+
+  data.hobbies.forEach(hobby => {
+    $("#hobbies").append(hobbyDescElem(hobby.name, hobby.items));
+  });
 });

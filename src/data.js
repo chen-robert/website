@@ -1,4 +1,4 @@
-const data = {
+const timelineData = {
   redpwn: {
     events: [
       {
@@ -50,16 +50,35 @@ const data = {
         date: "4/28/18",
         title: "Codeforces",
         desc: "Reached Master."
-      },
+      }
     ],
     name: "Competitive Programming"
-  },
+  }
 };
 
-delete data.redpwn;
-delete data.usaco;
+const data = {
+  timeline: {},
+  hobbies: [
+    {
+      name: "Math",
+      items: ["AMC 8 Perfect Score", "Odle Math Club Coach", "JMO Qualifier"]
+    },
+    {
+      name: "Volunteering",
+      items: ["Advanced English Teacher", "Curriculum Planner"]
+    },
+    {
+      name: "Cybersecurity",
+      items: ["Team Captain", "Third Place at PACTF"]
+    },
+    {
+      name: "Competitive Programming",
+      items: ["USACO Platinum", "Codeforces Master", "TeamsCode Instructor"]
+    }
+  ]
+};
 
-Object.keys(data).forEach(key => {
+Object.keys(data.timeline).forEach(key => {
   const { events } = data[key];
   events.forEach(event => (event.date = new Date(event.date).valueOf()));
 });
