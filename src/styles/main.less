@@ -7,16 +7,16 @@
 
 #content {
   width: 100%;
-  background-color: #eee;
+  background-color: @theme-base;
 }
 
 .row {
   padding: @theme-spacing;
-  
+
   @media @small-devices {
     padding: @theme-spacing / 2;
   }
-  
+
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -24,7 +24,7 @@
   width: 100%;
 }
 
-.col {
+.center-text {
   text-align: center;
 }
 
@@ -39,12 +39,12 @@
   }
 }
 
-.heading{
+.heading {
   width: 100%;
-  text-align: center;	
+  text-align: center;
 }
 
-.lone-icon{
+.lone-icon {
   font-size: 100px;
 }
 
@@ -53,12 +53,11 @@ body {
   margin: 0;
 }
 
-ul{
+ul {
   list-style: none;
   padding: 0;
 
-  
-  & li{
+  & li {
     margin: 10px 0;
     text-align: center;
   }
@@ -77,4 +76,4 @@ ul{
   .loop(@index + 1, @color); //darken(@color, 3%));
 }
 
-.loop(0, #eee);
+.loop(0, @theme-base);
