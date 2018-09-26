@@ -72,7 +72,7 @@ const data = {
     },
     {
       name: "Competitive Programming",
-      altText: "Analytical frame of mind. Clear and logical thinking.",
+      altText: "Knowledge of multiple datastructures and their impact on runtime. Competition problems develop clear and logical thinking skills.",
       items: ["USACO Platinum", "Codeforces Master", "TeamsCode Instructor"]
     },
     {
