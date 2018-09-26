@@ -28,7 +28,7 @@ $(function() {
       $("#header").removeClass("scrolled");
     }
 
-    if(scrollPos != 0){
+    if (scrollPos != 0) {
       $(".viewable").each((i, elem) => {
         if (scrollPos + $(window).height() > $(elem).offset().top) {
           $(elem).addClass("viewed");

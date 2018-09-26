@@ -66,7 +66,8 @@ const data = {
     },
     {
       name: "Cybersecurity",
-      altText: "Quickly grasps new concepts to keep up with a rapidly developing field. Understands important security concepts such as CSP.",
+      altText:
+        "Quickly grasps new concepts to keep up with a rapidly developing field. Understands important security concepts such as CSP.",
       items: ["Team Captain", "Third Place at PACTF"]
     },
     {
@@ -74,11 +75,11 @@ const data = {
       altText: "Analytical frame of mind. Clear and logical thinking.",
       items: ["USACO Platinum", "Codeforces Master", "TeamsCode Instructor"]
     },
-      {
-        name: "Math",
-        altText: "Motivated self-learner. Proficient at googling.",
-        items: ["AMC 8 Perfect Score", "Odle Math Club Coach", "JMO Qualifier"]
-      }
+    {
+      name: "Math",
+      altText: "Motivated self-learner. Proficient at googling.",
+      items: ["AMC 8 Perfect Score", "Odle Math Club Coach", "JMO Qualifier"]
+    }
   ]
 };
 
