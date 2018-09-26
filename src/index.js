@@ -28,17 +28,19 @@ $(function() {
       $("#header").removeClass("scrolled");
     }
 
-    $(".viewable").each((i, elem) => {
-      if (scrollPos + $(window).height() > $(elem).offset().top) {
-        $(elem).addClass("viewed");
-      }
-    });
+    if(scrollPos != 0){
+      $(".viewable").each((i, elem) => {
+        if (scrollPos + $(window).height() > $(elem).offset().top) {
+          $(elem).addClass("viewed");
+        }
+      });
+    }
   };
   $(window).scroll(checkScroll);
 
   checkScroll();
 
   data.hobbies.forEach(hobby => {
-    $("#hobbies").append(hobbyDescElem(hobby.name, hobby.items));
+    $("#hobbies").append(hobbyDescElem(hobby));
   });
 });

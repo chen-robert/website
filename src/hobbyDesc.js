@@ -1,11 +1,11 @@
-const hobby = (name, items) => `
-<div class="center-text panel panel-expandable">
+const hobby = ({name, items, altText=""}) => `
+<div class="center-text panel ${altText? "panel-expandable": ""}">
   <div class="panel-title">
     <h3>${name}</h3>
   </div>
   <div class="divider"></div>
   <div class="panel-text">
-    <ul>
+    <ul class="slideable">
     ${
       // prettier-ignore
       items.map(
@@ -18,6 +18,7 @@ const hobby = (name, items) => `
       .join("\n")
     }
     </ul>
+    <p class="slideable">${altText}</p>
   </div>
 </div>
 `;
