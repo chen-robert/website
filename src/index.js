@@ -7,6 +7,7 @@ import data from "data";
 
 import timelineElem from "./timeline";
 import hobbyDescElem from "./hobbyDesc";
+import projectDescElem from "./projectDesc";
 import timelineUtils from "./timelineUtils";
 
 $(function() {
@@ -43,4 +44,11 @@ $(function() {
   data.hobbies.forEach(hobby => {
     $("#hobbies").append(hobbyDescElem(hobby));
   });
+  data.projects.forEach(project => {
+    $("#projects").append(projectDescElem(project));
+  });
+  $(".panel-expandable").click(function(e){
+    $(this).toggleClass("toggled");
+  });
+  console.log($(".panel-expandable").click(() => console.log("HI")))
 });

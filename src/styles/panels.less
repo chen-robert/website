@@ -51,13 +51,22 @@
     vertical-align: top;
     transition-duration: @animation-duration;
   }
-  &:hover {
+  .panel-expandable__toggled(){
     background-color: @theme-hover;
 
     & .slideable {
       transform: translateX(-100%);
     }
   }
+  @media @small-devices{
+     &.toggled {
+       .panel-expandable__toggled();
+     }
+  }
+  &:hover{
+    .panel-expandable__toggled();
+  }
+
 }
 
 .panel-text {

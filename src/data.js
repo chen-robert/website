@@ -80,6 +80,12 @@ const data = {
       altText: "Motivated self-learner. Proficient at googling.",
       items: ["AMC 8 Perfect Score", "Odle Math Club Coach", "JMO Qualifier"]
     }
+  ],
+  projects: [
+    {
+      title: "HI",
+      desc: "Lorem ipsum"
+    }
   ]
 };
 
