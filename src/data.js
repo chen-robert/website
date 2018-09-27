@@ -91,7 +91,7 @@ const data = {
       title: "Breakdiving",
       desc: "The homepage for Break Diving, a 501(c)(3) tax-exempt charity with an international mission: helping individuals worldwide find success in life. ",
       github: "",
-      instance: "https://www.tosfairness.org/"
+      instance: "http://www.breakdiving.org/"
     },{
       title: "LLK/scratch-www",
       desc: "Contributor to Scratch's web client, a website that helps young children learn programming.",
