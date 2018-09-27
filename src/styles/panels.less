@@ -72,3 +72,26 @@
 .panel-text {
   text-align: left;
 }
+
+.icon-container{
+  display: flex;
+  justify-content: space-around;
+  height: 20px;
+}
+.small-icon{
+  width: 25px;
+  font-size: 25px;
+  transition-duration: @fast-animation-duration;
+
+
+  &:not(.disabled){
+    cursor: pointer;
+    &:hover{
+      transform: translate(-5px, -5px);
+      font-size: 35px;
+    }
+  }
+  &.disabled{
+    color: gray;
+  }
+}

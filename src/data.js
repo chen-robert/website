@@ -83,8 +83,20 @@ const data = {
   ],
   projects: [
     {
-      title: "HI",
-      desc: "Lorem ipsum"
+      title: "TOSFairness",
+      desc: "A service that reviews the TOS agreements of companies and corporations, giving them a rating representing how fair they are. ",
+      github: "",
+      instance: "https://www.tosfairness.org/"
+    },{
+      title: "Breakdiving",
+      desc: "The homepage for Break Diving, a 501(c)(3) tax-exempt charity with an international mission: helping individuals worldwide find success in life. ",
+      github: "",
+      instance: "https://www.tosfairness.org/"
+    },{
+      title: "LLK/scratch-www",
+      desc: "Contributor to Scratch's web client, a website that helps young children learn programming.",
+      github: "https://github.com/LLK/scratch-www",
+      instance: "https://scratch.mit.edu/"
     }
   ]
 };

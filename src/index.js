@@ -50,5 +50,4 @@ $(function() {
   $(".panel-expandable").click(function(e){
     $(this).toggleClass("toggled");
   });
-  console.log($(".panel-expandable").click(() => console.log("HI")))
 });

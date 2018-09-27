@@ -75,13 +75,10 @@ ul {
   box-sizing: border-box;
 }
 
-@to: 10;
-.loop(@index, @color) when(@index =< @to) {
-  .row:nth-child(@{index}) {
-    background-image: linear-gradient(@color, darken(@color, 3%));
+  .row {
+    background-image: linear-gradient(@theme-base, darken(@theme-base, 3%));
   }
-
-  .loop(@index + 1, @color); //darken(@color, 3%));
+a{
+  text-decoration: inherit;
+  color: inherit;
 }
-
-.loop(0, @theme-base);
