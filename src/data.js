@@ -73,7 +73,7 @@ const data = {
     {
       name: "Competitive Programming",
       altText: "Knowledge of multiple datastructures and their impact on runtime. Competition problems develop clear and logical thinking skills.",
-      items: ["USACO Platinum", "Codeforces Master", "TeamsCode Instructor"]
+      items: ["USACO Platinum", "Codeforces Expert", "TeamsCode Instructor"]
     },
     {
       name: "Math",
