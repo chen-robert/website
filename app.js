@@ -12,5 +12,5 @@ if(process.env.NODE_ENV === "production"){
   console.log(process.env.NODE_ENV);
 }
 
-app.use(express.static(path.join(__dirname, "dist")));
+app.use(express.static(path.join(__dirname, "public")));
 app.listen(PORT, () => console.log(`Started server at port ${PORT}`));

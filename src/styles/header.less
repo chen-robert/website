@@ -22,32 +22,40 @@
 
 .logo {
   color: white;
-  &:hover .diagonal {
-    transform: rotate(0deg);
+  &:hover .logo__diagonal--left {
+    transform: rotate(0deg) translateX(-30px);
+  }
+  &:hover .logo__diagonal--right {
+    transform: rotate(0deg) translateX(30px);
   }
   &:hover .logo-text {
-    transform: translateY(0px);
+    transform: translateY(-110px);
     opacity: 1;
   }
 }
 .logo-text {
+  transform: translateY(-50px);
   font-size: 2em;
   opacity: 0;
   transition-duration: @logo-animation-duration;
-
-  transform: translateY(-50px);
 }
-.diagonal {
-  transform: rotate(-45deg);
-  &.opposite {
-    transform: rotate(45deg);
-  }
+.logo__diagonal {
+  position: absolute;
   height: 2px;
   width: 100px;
   background-color: white;
 
   transition-duration: @logo-animation-duration;
 }
+
+.logo__diagonal--left{
+  transform: rotate(-45deg);
+}
+
+.logo__diagonal--right{
+  transform: rotate(45deg);
+}
+
 .diagonal-container {
   margin: 0 auto;
   width: 100px;
