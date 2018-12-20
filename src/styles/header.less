@@ -17,16 +17,17 @@
 }
 
 .title--text{
+  font-size: 5rem;
   font-weight: 100;
   
-  animation: text-animation @animation-duration;
+  animation: text @animation-duration;
 }
 
 .title--text__secondary {
-  font-size: 1rem;
+  font-size: 2rem;
 }
 
-@keyframes text-animation {
+@keyframes text {
  0%, 50%{ opacity: 0; transform: translateY(1em);}
  1000%{ opacity: 1; transform: translateY(0);}
 }
@@ -38,12 +39,16 @@
   height: 100%;
   
   z-index: 999;
-  background-color: #ccc;
+  background-color: @theme-color;
   
-  animation: bar-animation @animation-duration;
+  animation: bar @animation-duration;
 }
 
-@keyframes bar-animation {
+.title--bar__secondary{
+  background-color: #ccc;
+}
+
+@keyframes bar {
   0% {width: 0%;}
   40% , 60%{width: 100%; margin-left: 0%;}
   100% {width: 100%; margin-left: 100%;}

@@ -1,6 +1,8 @@
 @import "config";
 @import "header";
 
+@usaco-node-width: 2rem;
+
 .main{
   background-color: #222;
   position: relative;
@@ -13,7 +15,36 @@
   
   height: 16vh;
   width: 3px;
-  background-color: #333;
+  background-color: @theme-color;
+  
+  animation: divider @animation-duration;
+}
+
+@keyframes divider {
+ 0% { opacity: 0; height: 0; top: 0;}
+ 1000%{ opacity: 1; }
+}
+
+.usaco-logo--row{
+  display: flex;
+  justify-content: space-around;
+}
+
+.usaco-logo--node{
+  width: @usaco-node-width;
+  height: @usaco-node-width;
+  margin: .5em;
+  background-color: white;
+  border-radius: 50%;
+  
+  animation:  usaco-node @animation-duration;
+  
+  display: inline-block;
+}
+
+@keyframes usaco-node {
+ 0% { width: 0; height: 0; margin: calc(@usaco-node-width /2 + .5em)}
+ 1000%{ width: @usaco-node-width; height: @usaco-node-width; margin: .5em;}
 }
 
 .section{
@@ -29,8 +60,21 @@
   font-size: 3rem;
 }
 
+.section--panel{
+  display: flex;
+  padding: 5%;
+  width: 50%;
+}
+
+.section--panel__left{
+  justify-content: flex-end;
+}
+
+.section--panel__right{
+  justify-content: flex-start;
+}
+
 .section--text{
-  margin-left: 10%;
   color: white;
   font-size: 2rem;
 }
@@ -44,6 +88,10 @@
   height: 32vh;
   width: 3px;
   background-color: #eee;
+}
+
+.centered{
+  margin: 0 auto;
 }
 
 * {
