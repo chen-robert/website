@@ -1,5 +1,6 @@
 @import "config";
 @import "header";
+@import "collapser";
 
 @usaco-node-width: 2rem;
 
@@ -30,32 +31,37 @@
   justify-content: space-around;
 }
 
-.usaco-logo--node{
-  width: @usaco-node-width;
-  height: @usaco-node-width;
-  margin: .5em;
-  background-color: white;
-  border-radius: 50%;
-  
-  animation:  usaco-node @animation-duration;
-  
-  display: inline-block;
-}
+.animate{
+  .usaco-logo--node{
+    width: @usaco-node-width;
+    height: @usaco-node-width;
+    margin: .5em;
+    background-color: white;
+    border-radius: 50%;
+    
+    animation:  usaco-node @animation-duration;
+    
+    display: inline-block;
+  }
 
-@keyframes usaco-node {
- 0% { width: 0; height: 0; margin: calc(@usaco-node-width /2 + .5em)}
- 1000%{ width: @usaco-node-width; height: @usaco-node-width; margin: .5em;}
+  @keyframes usaco-node {
+   0% { width: 0; height: 0; margin: calc(@usaco-node-width /2 + .5em)}
+   1000%{ width: @usaco-node-width; height: @usaco-node-width; margin: .5em;}
+  }
 }
 
 .section{
-  height: 100vh;
-  display: flex;
-  position: relative;
+  height: 50vh;
   align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.section__top{
+  padding-top: 25vh;
 }
 
 .section--title{
-  margin-left: 40%;
   color: white;
   font-size: 3rem;
 }
@@ -74,6 +80,10 @@
   justify-content: flex-start;
 }
 
+.section--panel__center{
+  justify-content: center;
+}
+
 .section--text{
   color: white;
   font-size: 2rem;
@@ -83,7 +93,7 @@
   position: absolute;
   
   left: 50%;
-  top: calc(50vh - 16vh);
+  top: calc(37.5vh - 16vh);
   
   height: 32vh;
   width: 3px;

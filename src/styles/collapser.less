@@ -1,0 +1,52 @@
+.collapser{
+  text-align: center;
+  
+  & > div{
+    overflow: hidden;
+    display: inline-block;
+  }
+}
+
+.collapser--overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  
+  background-color: black;
+  z-index: -1;
+  
+  opacity: 0;
+}
+
+.collapser--circle{
+  border-radius: 50%;
+  background-color: white;
+  
+  height: 2rem;
+  width: 2rem;
+}
+
+.collapser:hover{
+  z-index: 10000;
+  position: relative;
+  .collapser--collapse{    
+    animation: collapse @animation-duration forwards;
+  }
+  & ~.collapser--overlay{
+    animation: overlay @animation-duration forwards;
+    z-index: 9999;
+  }
+  
+}
+
+@keyframes collapse{
+  0% {max-width: 100%;}
+  100% {max-width: 0%;}
+}
+
+@keyframes overlay{
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
