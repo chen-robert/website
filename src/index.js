@@ -1,5 +1,4 @@
 import "styles/main.less";
-import "materialize-css";
 import $ from "jquery";
 
 $(() => {

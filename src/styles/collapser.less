@@ -20,30 +20,29 @@
   opacity: 0;
 }
 
-.collapser--circle{
-  border-radius: 50%;
-  background-color: white;
-  
-  height: 2rem;
-  width: 2rem;
-}
-
 .collapser:hover{
   z-index: 10000;
   position: relative;
+  > div{
+    animation: expand @animation-duration @animation-duration forwards;
+  }
   .collapser--collapse{    
     animation: collapse @animation-duration forwards;
   }
-  & ~.collapser--overlay{
+  ~.collapser--overlay{
     animation: overlay @animation-duration forwards;
     z-index: 9999;
-  }
-  
+  }  
 }
 
 @keyframes collapse{
   0% {max-width: 100%;}
   100% {max-width: 0%;}
+}
+
+@keyframes expand{
+  0% {}
+  100% {font-size: 3rem; transform: translateY(-50vh);}
 }
 
 @keyframes overlay{
