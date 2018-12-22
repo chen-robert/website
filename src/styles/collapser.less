@@ -1,56 +1,70 @@
-.collapser{
+.collapser {
   text-align: center;
-  
-  & > div{
+
+  & > div {
     overflow: hidden;
     display: inline-block;
   }
 }
 
-.collapser--overlay{
+.collapser--overlay {
   position: fixed;
   top: 0;
   left: 0;
   height: 100vh;
   width: 100vw;
-  
+
   background-color: black;
   z-index: -1;
-  
+
   opacity: 0;
 }
 
-.collapser--popup{
+.collapser--popup {
   transform: translateY(1em);
 }
 
-.collapser:hover{
+.collapser:hover {
   z-index: 10000;
   position: relative;
 
-  .collapser--collapse{    
+  .collapser--collapse {
     animation: collapse @animation-duration @animation-duration forwards;
   }
-  .collapser--popup{    
-    animation: popup @animation-duration/2 3/2*@animation-duration forwards;
+  .collapser--popup {
+    animation: popup @animation-duration / 2 3/2 * @animation-duration forwards;
   }
-  ~.collapser--overlay{
+  ~ .collapser--overlay {
     animation: overlay @animation-duration forwards;
     z-index: 9999;
-  }  
+  }
 }
 
-@keyframes collapse{
-  0% {max-width: 100%;}
-  100% {max-width: 0%;}
+@keyframes collapse {
+  0% {
+    max-width: 100%;
+  }
+  100% {
+    max-width: 0%;
+  }
 }
 
 @keyframes popup {
- 0% { opacity: 0; transform: translateY(1em);}
- 100%{ opacity: 1; transform: translateY(0);}
+  0% {
+    opacity: 0;
+    transform: translateY(1em);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-@keyframes overlay{
-  0% {opacity: 0;}
-  100% {opacity: 1;}
+@keyframes overlay {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

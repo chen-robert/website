@@ -4,103 +4,117 @@
 
 @usaco-node-width: 2rem;
 
-.main{
+.main {
   background-color: #222;
   position: relative;
 }
 
-.main--divider{
+.main--divider {
   position: absolute;
   left: 50%;
   top: -8vh;
-  
+
   height: 16vh;
   width: 3px;
   background-color: @theme-color;
-  
+
   animation: divider @animation-duration;
 }
 
 @keyframes divider {
- 0% { opacity: 0; height: 0; top: 0;}
- 1000%{ opacity: 1; }
+  0% {
+    opacity: 0;
+    height: 0;
+    top: 0;
+  }
+  1000% {
+    opacity: 1;
+  }
 }
 
-.usaco-logo--row{
+.usaco-logo--row {
   display: flex;
   justify-content: space-around;
 }
 
-.animate{
-  .usaco-logo--node{
+.animate {
+  .usaco-logo--node {
     width: @usaco-node-width;
     height: @usaco-node-width;
-    margin: .5em;
+    margin: 0.5em;
     background-color: white;
     border-radius: 50%;
-    
-    animation:  usaco-node @animation-duration;
-    
+
+    animation: usaco-node @animation-duration;
+
     display: inline-block;
   }
 
   @keyframes usaco-node {
-   0% { width: 0; height: 0; margin: calc(@usaco-node-width /2 + .5em)}
-   1000%{ width: @usaco-node-width; height: @usaco-node-width; margin: .5em;}
+    0% {
+      width: 0;
+      height: 0;
+      margin: calc(@usaco-node-width / 2 + 0.5em);
+    }
+    1000% {
+      width: @usaco-node-width;
+      height: @usaco-node-width;
+      margin: 0.5em;
+    }
   }
 }
 
-.section{
+.section {
   height: 50vh;
   align-items: center;
   justify-content: center;
   display: flex;
 }
 
-.section__top{
+.section__top {
   padding-top: 25vh;
 }
 
-.section--title{
+.section--title {
   color: white;
   font-size: 3rem;
 }
 
-.section--panel{
+.section--panel {
   display: flex;
   padding: 5%;
   width: 50%;
 }
 
-.section--panel__left{
+.section--panel__left {
   justify-content: flex-end;
 }
 
-.section--panel__right{
+.section--panel__right {
   justify-content: flex-start;
 }
 
-.section--panel__center{
+.section--panel__center {
   justify-content: center;
 }
 
-.section--text{
+.section--text {
   color: white;
   font-size: 2rem;
 }
 
-.section--divider{
+.section--divider {
   position: absolute;
-  
+
   left: 50%;
   top: calc(37.5vh - 16vh);
-  
+
   height: 32vh;
   width: 3px;
   background-color: #eee;
 }
 
-.centered{
+.centered {
   margin: 0 auto;
 }
 
@@ -110,5 +124,5 @@
   box-sizing: border-box;
   border: 0;
   font-style: inherit;
-  font-family: Intro,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: Intro, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
