@@ -1,4 +1,6 @@
 .collapser {
+  position: relative;
+  z-index: 9999;
   text-align: center;
 
   & > div {
@@ -15,56 +17,32 @@
   width: 100vw;
 
   background-color: black;
-  z-index: -1;
-
+  pointer-events: none;
+  
+  transition: opacity @animation-duration (@quick-animation-duration + @animation-duration);
   opacity: 0;
 }
 
 .collapser--popup {
   transform: translateY(1em);
+  transition: transform @quick-animation-duration;
 }
 
+.collapser--collapse {
+  max-width: 100%;
+  transition: max-width @animation-duration @quick-animation-duration;
+}
 .collapser:hover {
-  z-index: 10000;
-  position: relative;
-
   .collapser--collapse {
-    animation: collapse @animation-duration @animation-duration forwards;
-  }
-  .collapser--popup {
-    animation: popup @animation-duration / 2 3/2 * @animation-duration forwards;
-  }
-  ~ .collapser--overlay {
-    animation: overlay @animation-duration forwards;
-    z-index: 9999;
-  }
-}
-
-@keyframes collapse {
-  0% {
-    max-width: 100%;
-  }
-  100% {
     max-width: 0%;
   }
-}
-
-@keyframes popup {
-  0% {
-    opacity: 0;
-    transform: translateY(1em);
-  }
-  100% {
-    opacity: 1;
+  .collapser--popup {
     transform: translateY(0);
+    transition: transform @quick-animation-duration @animation-duration;
+  }
+  ~ .collapser--overlay {
+    opacity: 1;
+    transition: opacity @animation-duration;
   }
 }
 
-@keyframes overlay {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
