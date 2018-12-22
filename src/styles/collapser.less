@@ -24,7 +24,7 @@
 }
 
 .collapser--popup {
-  transform: translateY(1em);
+  transform: translateY(1.2em);
   transition: transform @quick-animation-duration;
 }
 
@@ -38,7 +38,7 @@
   }
   .collapser--popup {
     transform: translateY(0);
-    transition: transform @quick-animation-duration @animation-duration;
+    transition: transform @quick-animation-duration 2 * @animation-duration;
   }
   ~ .collapser--overlay {
     opacity: 1;
@@ -46,3 +46,7 @@
   }
 }
 
+.collapser--img{
+  width: 2rem;
+  height: 2rem;
+}
