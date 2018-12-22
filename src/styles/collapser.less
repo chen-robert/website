@@ -20,14 +20,19 @@
   opacity: 0;
 }
 
+.collapser--popup{
+  transform: translateY(1em);
+}
+
 .collapser:hover{
   z-index: 10000;
   position: relative;
-  > div{
-    animation: expand @animation-duration @animation-duration forwards;
-  }
+
   .collapser--collapse{    
-    animation: collapse @animation-duration forwards;
+    animation: collapse @animation-duration @animation-duration forwards;
+  }
+  .collapser--popup{    
+    animation: popup @animation-duration/2 3/2*@animation-duration forwards;
   }
   ~.collapser--overlay{
     animation: overlay @animation-duration forwards;
@@ -40,9 +45,9 @@
   100% {max-width: 0%;}
 }
 
-@keyframes expand{
-  0% {}
-  100% {font-size: 3rem; transform: translateY(-50vh);}
+@keyframes popup {
+ 0% { opacity: 0; transform: translateY(1em);}
+ 100%{ opacity: 1; transform: translateY(0);}
 }
 
 @keyframes overlay{
