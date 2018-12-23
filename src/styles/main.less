@@ -82,6 +82,7 @@
 }
 
 .section--panel {
+  position: relative;
   display: flex;
   padding: 5%;
   width: 50%;
@@ -96,12 +97,29 @@
 }
 
 .section--panel__center {
-  justify-content: center;
+  justify-content: center;  
 }
 
 .section--text {
   color: white;
   font-size: 2rem;
+}
+
+.section--img{
+  height: 35vh;
+  filter: grayscale(100%) brightness(50%);
+  
+  transition: filter @quick-animation-duration;
+  
+  &:hover{
+    filter: grayscale(80%) brightness(80%);
+  }
+}
+
+.section--title{
+  position: absolute;
+  left: -3rem;
+  top: 30%;
 }
 
 .section--divider {

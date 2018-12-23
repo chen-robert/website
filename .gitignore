@@ -1,4 +1,4 @@
 node_modules
 dist/*
 !dist/index.html
-!dist/*.svg
+!dist/imgs
