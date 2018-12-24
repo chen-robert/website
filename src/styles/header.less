@@ -8,17 +8,31 @@
 .title {
   margin-left: 16%;
   display: inline-block;
+  width: 100%;
+  
+  @media only screen and (max-width: @mobile-breakpoint) {
+    margin: 0;
+  }
 }
 
 .title--container {
   position: relative;
   overflow: hidden;
   display: table;
+  
+  @media only screen and (max-width: @mobile-breakpoint) {
+    margin: 0 auto;
+  }
 }
 
 .title--text {
   font-size: 5rem;
   font-weight: 100;
+  
+ 
+  @media only screen and (max-width: @mobile-breakpoint) {
+    font-size: 2.5rem;
+  }
 }
 
 .animate {
@@ -29,6 +43,10 @@
 
 .title--text__secondary {
   font-size: 2rem;
+  
+  @media only screen and (max-width: @mobile-breakpoint) {
+    font-size: 1.5rem;
+  }
 }
 
 @keyframes text {

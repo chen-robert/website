@@ -25,7 +25,8 @@
 
 .collapser--popup {
   transform: translateY(1.2em);
-  transition: transform @quick-animation-duration;
+  opacity: 0;
+  transition: all @quick-animation-duration;
 }
 
 .collapser--collapse {
@@ -38,15 +39,26 @@
   }
   .collapser--popup {
     transform: translateY(0);
-    transition: transform @quick-animation-duration 2 * @animation-duration;
+    opacity: 1;
+    transition: all @quick-animation-duration 2 * @animation-duration;
   }
   ~ .collapser--overlay {
     opacity: 1;
     transition: opacity @animation-duration;
   }
+  
+  .collapser--img{
+    width: 2rem;
+    height: 2rem;
+    
+    @media only screen and (max-width: @mobile-breakpoint) {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
 }
 
 .collapser--img{
-  width: 2rem;
-  height: 2rem;
+  width: 0;
+  transition: width @animation-duration;
 }
