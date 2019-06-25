@@ -1,0 +1,167 @@
+@import "config";
+@import "header";
+@import "navbar";
+@import "collapser";
+
+@usaco-node-width: 2rem;
+
+.main {
+  background-color: #222;
+  position: relative;
+  display: none;
+}
+
+.main--divider {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  height: 3px;
+  background-color: @theme-color;
+
+  animation: divider @animation-duration forwards;
+}
+
+@keyframes divider {
+  0% {
+    left: 50%;
+    width: 0;
+  }
+  100% {
+    left: 0;
+    width: 100vw;
+  }
+}
+
+.usaco-logo--row {
+  display: flex;
+  justify-content: space-around;
+}
+
+.animate {
+  .usaco-logo--node {
+    width: @usaco-node-width;
+    height: @usaco-node-width;
+    margin: 0.5em;
+    background-color: white;
+    border-radius: 50%;
+
+    animation: usaco-node @animation-duration;
+
+    display: inline-block;
+  }
+
+  @keyframes usaco-node {
+    0% {
+      width: 0;
+      height: 0;
+      margin: calc(@usaco-node-width / 2 + 0.5em);
+    }
+    1000% {
+      width: @usaco-node-width;
+      height: @usaco-node-width;
+      margin: 0.5em;
+    }
+  }
+}
+
+.section {
+  height: 50vh;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  
+  @media only screen and (max-width: @mobile-breakpoint) {
+    height: initial;
+  }
+}
+
+
+
+.section--title {
+  color: white;
+  font-size: 2.5rem;
+  
+  @media only screen and (max-width: @mobile-breakpoint) {
+    font-size: 2rem;
+    text-align: center;
+  }
+}
+
+.section--panel {
+  position: relative;
+  display: flex;
+  padding: 5%;
+  width: 50%;
+  
+  @media only screen and (max-width: @mobile-breakpoint) {
+    width: 100%;
+    padding-top: 25%;
+    justify-content: center;  
+  }
+}
+
+/* Note min-width here. These only apply on big screens. */
+@media only screen and (min-width: @mobile-breakpoint) {
+  .section__top {
+    padding-top: 25vh;
+  }
+  
+  .section--panel__left {
+    justify-content: flex-end;
+  }
+
+  .section--panel__right {
+    justify-content: flex-start;
+  }
+
+  .section--panel__center {
+    justify-content: center;  
+  }
+}
+
+
+.section--text {
+  color: white;
+  font-size: 2rem;
+}
+
+.section--img{
+  height: 35vh;
+  filter: grayscale(100%) brightness(50%);
+  
+  transition: filter @quick-animation-duration;
+  
+  &:hover{
+    filter: grayscale(80%) brightness(80%);
+  }
+}
+
+.section--divider {
+  position: absolute;
+
+  left: 50%;
+  top: calc(37.5vh - 16vh);
+
+  height: 32vh;
+  width: 3px;
+  background-color: #eee;
+}
+
+.centered {
+  margin: 0 auto;
+}
+
+html{
+  overflow-x: hidden;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: 0;
+  font-style: inherit;
+  font-family: Intro, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
