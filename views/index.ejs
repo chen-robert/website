@@ -7,51 +7,9 @@
     <meta name="og:type" content="website">
     <meta name="og:site_name" content="Robert Chen">
     <meta name="og:description" content="A portfolio of sorts">
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' localhost:* ws://localhost:*; font-src 'self' data:; script-src 'self'; object-src 'none';">
   </head>
-  <body>    
-    <style>
-      @keyframes fadeout {
-        from {}
-        to {background-color: transparent;}
-      }
-      
-      @keyframes collapse {
-        from {}
-        to {height: 0%}
-      }
-    </style>
-    <div style="position: absolute; height: 100vh; width: 100vw; overflow: hidden; display: flex; flex-wrap: wrap;
-      background-color: black;
-      animation: fadeout 1ms 250ms forwards;
-      z-index: 1000;
-    ">
-
-    <% for(let i = 0; i < 10; i++) { %>
-      <% for(let j = 0; j < 1; j++) { %>
-        <div style="
-          width: <%= 100 / 1 %>%;
-          height: <%= 100 / 10 %>%;
-          
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        ">
-        <div style="
-          background-color: black;
-          animation: fadeout 500ms <%= 500 + 100 * (i)%>ms forwards;
-
-          height: 100%;
-          width: 100%;
-          display: inline-block;
-          margin: 0;
-          padding: 0;
-          
-          "></div>
-        </div>
-      <% } %>
-    <% } %>
-    </div>
+  <body>
     <div class="navbar">
       <a class="navbar--link" href="mailto:robertchen@live.com">
         Email
@@ -63,7 +21,7 @@
         Blog
       </a>
     </div>
-    <header class="header animate animate-listener">
+    <header class="header animate-listener">
       <div class="title">
         <div class="title--container">
           <h1 class="title--text">
