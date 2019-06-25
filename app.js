@@ -12,5 +12,11 @@ app.use(lessMiddleware(staticPath));
 app.use(autoprefixer({browsers: ["last 3 versions", "> 1%"], cascade: false}));
 app.use(express.static(staticPath));
 
-app.get("/", (req, res) => res.render("index"));
+app.get("/", (req, res) => {
+  const informal = req.query.informal == "y";
+  res.render("index", {informal})
+});
+app.get("/a", (req, res) => {
+  res.send("<3");
+});
 app.listen(PORT, () => console.log(`Started server at port ${PORT}`));
