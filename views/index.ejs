@@ -8,7 +8,6 @@
     <meta name="og:type" content="website">
     <meta name="og:site_name" content="Robert Chen">
     <meta name="og:description" content="A portfolio of sorts">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' localhost:* ws://localhost:*; font-src 'self' data:; script-src 'self'; object-src 'none';">
   </head>
   <body>
     <div class="navbar">
@@ -41,14 +40,20 @@
       </div>
     </header>
     <section class="main">
+      <% for(var i = 0; i < 3; i++) { %>
       <div class="main--section">
-        <div class="section--header">
-          cysec
-        </div>
-        <div class="section--text">
+        <div class="panel">
+          <div class="panel--header">
+          redpwn
+          </div>
+          <div class="panel--text">
           cybersecurity is fun. i compete with redpwn for ctfs.
+          </div>
         </div>
       </div>
+      <% } %>
     </section>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="/scripts/main.js"></script>
   </body>
 </html>
