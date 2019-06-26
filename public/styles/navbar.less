@@ -4,8 +4,9 @@
   left: 0;
   
   width: 100%;
+  box-shadow: 0 1px 10px -3px;
 
-  padding: 50px;  
+  background-color: #eee;
   display: flex;
   
   @media only screen and (max-width: @mobile-breakpoint) {
@@ -21,27 +22,30 @@
 }
 
 .navbar--link{
-  margin: 0 50px;
+  padding: 10px 50px;
   text-decoration: none;
   font-size: 1.3rem;
   color: #444;
+  
   position: relative;
+  z-index: 1000;
   
   &:before{
+    z-index: -1;
     content: "";
     position: absolute;
-    bottom: 50%;
-    left: 110%;
-    background-color: @theme-color;
+    bottom: 0;
+    right: 0;
+    background-color: darken(#eee, 5%);
     
-    height: 3px;
+    height: 100%;
     width: 0;
     transition: all @quick-animation-duration;
   }
   
   &:hover:before {
-    width: 120%;
-    left: -10%;
+    width: 100%;
+    left: 0;
     transition: width @quick-animation-duration;
   }
 }
