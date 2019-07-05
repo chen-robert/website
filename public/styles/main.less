@@ -14,52 +14,53 @@
   width: 100%;
   padding: 50px 25%;
   
+  display: flex;
+  justify-content: center;
 }
 
 .panel {
   background-color: white;
+
+  transition-delay: 0;
+  transition-duration: @animation-duration;
   
   width: 25%;
-  transition-duration: @quick-animation-duration;
   cursor: pointer;
   padding: 20px;
-    height: 50px;
   
   &:hover{
     transform: translateY(-10px);
     box-shadow: 0 10px 10px -10px;
   }
   
+  & .panel--body {
+    height: 0;
+  }
+
   &.clicked {
     width: 100%;
-    animation: expand @animation-duration forwards;
+
     transform: translateY(-10px);
     box-shadow: 0 10px 10px -10px;
-  }
-}
 
-@keyframes expand {
-  0% {
-    width: 25%;
-  }
-  50% {
-    width: 100%;
-    height: 50px;
-  }
-  100% {
-    height: 250px;
+    & .panel--body {
+      height: 250px;
+      transition-duration: @animation-duration;
+    }
   }
 }
 
 .panel--header {
   font-size: 1.5em;
+  text-align: center;
 }
 
-.panel--text {
-  display: none;
-  
+.panel--body {
   font-size: 1.3em;
-  padding: 15px 50px;
+  overflow: hidden;
+  
+  transition-delay: 0;
+  transition-duration: @animation-duration;
 }
 
 .a {
