@@ -1,0 +1,12 @@
+{
+  "panels": [
+    {
+      "title": "cybersecurity",
+      "text": "I compete in CTFS with redpwn."
+    },
+    {
+      "title": "usaco",
+      "text": "I do competitive programming."
+    }
+  ]
+}

@@ -40,18 +40,18 @@
       </div>
     </header>
     <section class="main">
-      <% for(var i = 0; i < 3; i++) { %>
+      <% panels.forEach(panel => { %>
       <div class="main--section">
         <div class="panel">
           <div class="panel--header">
-          redpwn
+            <%= panel.title %>
           </div>
           <div class="panel--body">
-          cybersecurity is fun. i compete with redpwn for ctfs.
+            <%= panel.text %>
           </div>
         </div>
       </div>
-      <% } %>
+      <% }) %>
     </section>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="/scripts/main.js"></script>

@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "echo none",
-    "dev": "nodemon app.js --watch views --watch src --watch public --watch app.js",
+    "dev": "nodemon app.js --watch views --watch src --watch app.js --watch public --watch config.json",
     "format": "prettier \"src/**/*\" --write",
     "start": "node app.js"
   },

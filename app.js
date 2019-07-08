@@ -12,8 +12,12 @@ app.use(lessMiddleware(staticPath));
 app.use(autoprefixer({browsers: ["last 3 versions", "> 1%"], cascade: false}));
 app.use(express.static(staticPath));
 
+const config = require("./config.json");
+
 app.get("/", (req, res) => {
-  res.render("index")
+  res.render("index", {
+    panels: config.panels
+  })
 });
 
 app.listen(PORT, () => console.log(`Started server at port ${PORT}`));
