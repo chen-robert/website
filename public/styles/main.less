@@ -26,8 +26,7 @@
 
 .panel {
   background-color: white;
-
-  transition-duration: @quick-animation-duration;
+  transition-duration: @animation-duration;
   
   @media @mobile {
     min-width: 100%;
@@ -52,6 +51,11 @@
 
     & .panel--body {
       height: 50vh;
+      
+      @media @mobile {
+        height: 200vh;
+      }
+      
       transition-duration: @animation-duration;
     }
   }

@@ -2,15 +2,21 @@
 <html lang="en">
   <head>
     <title>Robert Chen</title>
-    <link href="https://fonts.googleapis.com/css?family=Cutive+Mono|Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cutive+Mono|Montserrat&display=swap">
     <link rel="stylesheet" href="/styles/main.css">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0">
-    <meta name="og:type" content="website">
-    <meta name="og:site_name" content="Robert Chen">
-    <meta name="og:description" content="A portfolio of sorts">
+    
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Robert Chen - Portfolio">
+    <meta property="og:title" content="Robert Chen - Portfolio">
+    <meta property="og:description" content="My online portfolio">
+    <meta property="og:url" content="https://robertchen.cc/">
+    
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; font-src data: fonts.gstatic.com; style-src fonts.googleapis.com 'self'; script-src code.jquery.com 'self'">
   </head>
   <body>
-    <div class="navbar">
+    <nav class="navbar">
       <a class="navbar--link" href="mailto:robertchen@live.com">
         Email
       </a>
@@ -20,7 +26,7 @@
       <a class="navbar--link navbar--link__hide-mobile" href="https://redpwn.xyz/" target="_blank">
         Blog
       </a>
-    </div>
+    </nav>
     <header class="header animate-listener">
       <div class="title">
         <div class="title--container">
@@ -40,10 +46,10 @@
       </div>
     </header>
     <div class="indicator"></div>
-    <section class="main">
-      <% panels.forEach(panel => { %>
-      <div class="main--section">
-        <div class="panel">
+    <main class="main">
+      <% panels.forEach((panel, i) => { %>
+      <section class="main--section">
+        <div class="panel <%= i === 0? "clicked": "" %>">
           <div class="panel--header">
             <%= panel.title %>
           </div>
@@ -51,10 +57,10 @@
             <%- include(panel.file) %>
           </div>
         </div>
-      </div>
+      </section>
       <% }) %>
-    </section>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </main>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="/scripts/main.js"></script>
   </body>
 </html>

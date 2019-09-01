@@ -2,6 +2,10 @@
   display: flex;
   justify-content: space-around;
   width: 100%;
+  
+  @media @mobile {
+    flex-wrap: wrap;
+  }
 }
 
 .topic {
@@ -16,7 +20,21 @@
   padding: 15px;
   
   & p {
-    margin-bottom: 15px;
+    margin-bottom: 25px;
+  }
+  
+  & a {
+    color: @link-color;
+    text-decoration: none;
+    
+    &:hover {
+      border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+      color: darken(@link-color, 10%);
+    }
+  }
+  
+  & sup {
+    margin: 0 5px;
   }
 }
 
