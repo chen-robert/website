@@ -3,17 +3,24 @@
 @import "navbar";
 @import "collapser";
 
+@mobile: ~"only screen and (max-width: 529px)";
+
 .main {
   display: flex;
   flex-wrap: wrap;
+
+  padding: 50px 0;
   
   background-color: lighten(@theme-color, 15%);
 }
 
 .main--section {
   width: 100%;
-  padding: 50px 25%;
-  
+  padding: 50px;
+  @media @mobile {
+    padding: 50px 0;
+  }
+
   display: flex;
   justify-content: center;
 }
@@ -21,10 +28,13 @@
 .panel {
   background-color: white;
 
-  transition-delay: 0;
-  transition-duration: @animation-duration;
+  transition-duration: @quick-animation-duration;
   
+  @media @mobile {
+    min-width: 100%;
+  }
   width: 50%;
+  max-width: 50%;
   cursor: pointer;
   padding: 20px;
   
@@ -38,6 +48,7 @@
   }
 
   &.clicked {
+    max-width: 1200px;
     width: 100%;
 
     transform: translateY(-10px);
