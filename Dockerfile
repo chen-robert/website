@@ -11,6 +11,4 @@ COPY . .
 
 ENV NODE_ENV production
 
-USER node
-
 CMD ["node", "app.js"]
