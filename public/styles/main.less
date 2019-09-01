@@ -17,11 +17,8 @@
 
 .main--section {
   width: 100%;
-  padding: 50px;
-  @media @mobile {
-    padding: 50px 0;
-  }
-
+  padding: 50px 0;
+  
   display: flex;
   justify-content: center;
 }
@@ -35,11 +32,9 @@
     min-width: 100%;
   }
   width: 50%;
-  max-width: 50%;
   cursor: pointer;
-  padding: 20px;
   
-  &:hover{
+  &:hover:not(.clicked){
     transform: translateY(-10px);
     box-shadow: 0 10px 10px -10px;
   }
@@ -49,14 +44,13 @@
   }
 
   &.clicked {
-    max-width: 1200px;
     width: 100%;
+    cursor: default;
 
     transform: translateY(-10px);
-    box-shadow: 0 10px 10px -10px;
 
     & .panel--body {
-      height: 250px;
+      height: 50vh;
       transition-duration: @animation-duration;
     }
   }
@@ -65,6 +59,7 @@
 .panel--header {
   font-size: 1.5em;
   text-align: center;
+  padding: 20px;
 }
 
 .panel--body {
@@ -73,6 +68,7 @@
   
   transition-delay: 0;
   transition-duration: @animation-duration;
+  padding: 0 20px;
 }
 
 .a {

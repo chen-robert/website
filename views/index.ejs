@@ -48,7 +48,7 @@
             <%= panel.title %>
           </div>
           <div class="panel--body">
-            <%= panel.text %>
+            <%- include(panel.file) %>
           </div>
         </div>
       </div>

@@ -2,10 +2,12 @@
   "panels": [
     {
       "title": "cybersecurity",
+      "file": "partials/cysec",
       "text": "I compete in CTFS with redpwn."
     },
     {
       "title": "usaco",
+      "file": "partials/cp",
       "text": "I do competitive programming."
     }
   ]
