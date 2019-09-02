@@ -11,6 +11,14 @@
     {
       "title": "debate",
       "file": "partials/debate"
+    },
+    {
+      "title": "web development",
+      "file": "partials/web"
+    },
+    {
+      "title": "misc",
+      "file": "partials/misc"
     }
   ]
 }
