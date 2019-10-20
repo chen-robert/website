@@ -15,8 +15,10 @@ app.use(express.static(staticPath));
 const config = require("./config.json");
 
 app.get("/", (req, res) => {
+  const show = req.params.resume === "show";
   res.render("index", {
-    panels: config.panels
+    panels: config.panels,
+    show
   })
 });
 
