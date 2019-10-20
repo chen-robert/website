@@ -6,9 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "echo none",
-    "dev": "nodemon app.js --watch views --watch src --watch app.js --watch public --watch config.json",
+    "dev": "nodemon index.js --watch views --watch src --watch index.js --watch public --watch config.json",
     "format": "prettier \"src/**/*\" --write",
-    "start": "node app.js"
+    "start": "node index.js"
   },
   "author": "Robert Chen",
   "license": "ISC",

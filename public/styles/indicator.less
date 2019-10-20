@@ -1,0 +1,41 @@
+.indicator::before{
+  content: '╲╱';
+  color: black;
+  position: absolute;
+  opacity: 0.8;
+  text-shadow: 0 0 .5rem rgba(0,0,0,0.5);
+  width: 6rem;
+  font-size: 2rem;
+  height: 4rem;
+  line-height: 4rem;
+  text-align: center;
+  bottom: 2rem;
+  margin-left: -3rem;
+  left: 50%;
+  animation: bounce 1s ease infinite, fadein 4s;
+}
+
+@keyframes bounce {
+  60% {
+    transform: translateY(0);
+  }
+  80% {
+    transform: translateY(-20%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadein{
+  0% { opacity:0; }
+  75% { opacity:0; }
+  100% { opacity:1; }
+}
+
+
+.indicator {
+  position: relative;
+  width: 100%;
+  top: -50px;
+}
