@@ -15,7 +15,7 @@ app.use(express.static(staticPath));
 const config = require("./config.json");
 
 app.get("/", (req, res) => {
-  const show = req.params.resume === "show";
+  const show = req.query.resume === "show";
   res.render("index", {
     panels: config.panels,
     show
