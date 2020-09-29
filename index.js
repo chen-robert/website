@@ -1,6 +1,6 @@
-const express = require("express"),
- autoprefixer = require('express-autoprefixer'),
- lessMiddleware = require('less-middleware');
+const express = require("express");
+const autoprefixer = require('express-autoprefixer');
+const lessMiddleware = require('less-middleware');
 
 const PORT = process.env.PORT || 3000;
 
@@ -15,10 +15,8 @@ app.use(express.static(staticPath));
 const config = require("./config.json");
 
 app.get("/", (req, res) => {
-  const show = req.query.resume === "show";
   res.render("index", {
-    panels: config.panels,
-    show
+    config
   })
 });
 

@@ -1,27 +1,14 @@
 .navbar{
-  position: absolute;
-  top: 0;
-  left: 0;
-  
-  width: 100%;
-
-  background-color: #eee;
   display: flex;
   
   @media only screen and (max-width: @mobile-breakpoint) {
     padding: 10px 0;
-    justify-content: space-around;
-  }
-}
-
-@media only screen and (max-width: @mobile-breakpoint) {
-  .navbar--link__hide-mobile{
-    display: none;
+    justify-content: center;;
   }
 }
 
 .navbar--link{
-  padding: 10px 50px;
+  padding: 10px 20px;
   text-decoration: none;
   font-size: 1.5rem;
   color: #444;
@@ -29,6 +16,7 @@
   position: relative;
   z-index: 1000;
   
+  border-bottom: 1px solid #ddd;
   &:before{
     z-index: -1;
     content: "";

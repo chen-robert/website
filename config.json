@@ -1,24 +1,4 @@
 {
   "panels": [
-    {
-      "title": "cybersecurity",
-      "file": "partials/cysec"
-    },
-    {
-      "title": "competitive programming",
-      "file": "partials/cp"
-    },
-    {
-      "title": "debate",
-      "file": "partials/debate"
-    },
-    {
-      "title": "web development",
-      "file": "partials/web"
-    },
-    {
-      "title": "misc",
-      "file": "partials/misc"
-    }
   ]
 }
