@@ -18,7 +18,7 @@
   <body>
     <header class="header animate-listener">
       <div class="title">
-        <div class="navbar">
+        <div class="navbar fade-in">
           <a class="navbar--link" href="https://github.com/chen-robert" target="_blank">
             Github
           </a>
@@ -40,18 +40,52 @@
           <h1 class="title--text title--text__secondary">tldr; I code</h1>
           <div class="title--bar title--bar__secondary"></div>
         </div>
-        <div class="title--link-container">
+        <div class="title--link-container fade-in">
           <a class="title--link" href="mailto:me@robertchen.cc">me@robertchen.cc</a>
         </div>
       </div>
-      </canvas>
+      <div class="pfp fade-in">
+        <img src="/imgs/pfp.jpg" />
+      </div>
     </header>
     
-    <main class="main">
+    <% if(false) { %>
+    <main class="main fade-in">
       <div class="main--section">
+        <h3 class="section--title">Stuff I Made<div class="title--subscript">contribute to</div></h3>
+        <div class="section--items">
+          <a href="https://github.com/redpwn/rctf" class="section--item">
+            <h4 class="item--title">rCTF</h4>
+            <p class="item--text">CTF platform</p>
+          </a>
+          <a href="https://ctf.redpwn.net/" class="section--item">
+            <h4 class="item--title">redpwnCTF</h4>
+            <p class="item--text">CTF competition</p>
+          </a>
+          <a href="https://edumun.com/" class="section--item">
+            <h4 class="item--title">EDUMUN</h4>
+            <p class="item--text">Model UN</p>
+          </a>
+        </div>
+      </div>
+      <div class="main--section">
+        <h3 class="section--title">Stuff I Broke<div class="title--subscript">hacked</div></h3>
+        <div class="section--items">
+          <a href="https://github.com/codespaces" class="section--item">
+            <h4 class="item--title">GitHub Codespaces</h4>
+            <p class="item--text">XSS</p>
+          </a>
+          <a href="#todo" class="section--item">
+            <h4 class="item--title">ASUS RT-AC68U</h4>
+            <p class="item--text">pre-auth RCE</p>
+          </a>
+          <a href="https://secrethitler.io/" class="section--item">
+            <h4 class="item--title">Secret Hitler</h4>
+            <p class="item--text">account takeover</p>
+          </a>
+        </div>
       </div>
     </main>
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  <script src="/scripts/main.js"></script>
+    <% } %>
   </body>
 </html>
