@@ -1,42 +1,131 @@
-$(() => {
-  $(".panel").click(function () {
-    $(".panel").removeClass("clicked");
-    $(this).addClass("clicked");    
+const wait = time => new Promise(res => setTimeout(res, time));
+
+const config = JSON.parse(document.getElementById("config").dataset.value);
+
+const DELAY = 100;
+const clearBuffer = async () => {
+  const elems = document.querySelectorAll(".title--container");
+  for(const elem of elems) {
+    elem.classList.add("deleted");
+    await wait(DELAY); 
+  }
+
+  for(const elem of elems) elem.remove();
+}
+
+const bufferElem = document.querySelectorAll("[data-target='buffer']")[0];
+const textTemplate = text => `
+<div class="title--container">
+	<h1 class="title--text title--text__secondary">${text}</h1>
+</div>`;
+const titleTemplate = text => `
+<div class="title--container">
+	<h1 class="title--text">${text}</h1>
+</div>`;
+const subtitleTemplate = text => `
+<div class="title--container">
+	<h1 class="title--text title--subtext">${text}</h1>
+</div>`;
+const linkTemplate = links => {
+	let ret = `<div class="title--container title--link-container">`;
+  for(const link of links) {
+	  ret += `<a class="title--link" href="${link.url}">${link.text}</a>`
+  }
+  ret += `</div>`;
+  return ret;
+};
+const appendBuffer = async ({ text, title, subtitle, links }) => {
+  let data = text;
+  let template = textTemplate;
+  if(title) template = titleTemplate;
+  if(subtitle) template = subtitleTemplate;
+
+  if(links) {
+    template = linkTemplate;
+    data = links;
+  }
+
+  bufferElem.insertAdjacentHTML('beforeend', template(data));
+  await wait(DELAY); 
+}
+
+let processing = false;
+const checkProcessing = () => {
+  if(processing) return true;
+
+  processing = true;
+  return false;
+}
+
+const wrapper = fn => async () => {
+  if(checkProcessing()) return;
+
+  await clearBuffer();
+  await fn();
+
+  processing = false;
+}
+
+const setAboutBuffer = wrapper(async () => {
+	await appendBuffer({ text: "About", title: true });
+  const lines = [...config.about.split("\n")];
+  for(const line of lines) {
+    await appendBuffer({ text: line });
+  }
+
+  await appendBuffer({ text: "" });
+  //await appendBuffer({ text: "Interesting Things", subtitle: true });
+  await appendBuffer({ text: `rCTF - <a href="https://rctf.redpwn.net/" class="title--link">GitHub</a>` });
+});
+
+const setIndexBuffer = wrapper(async () => {
+	await appendBuffer({ text: "Robert Chen", title: true });
+  const lines = ["security research and software development", "tldr; I code"];
+  for(const line of lines) {
+    await appendBuffer({ text: line });
+  }
+  await appendBuffer({
+    links: [
+      { url: "mailto:me@robertchen.cc", text: "me@robertchen.cc" },
+      { url: "https://hackerone.com/notdeghost", text: "@notdeghost" }
+    ]
   });
 });
 
-const img = new Image();
-img.addEventListener("load", () => {
-  let tick = 0;
-
-  const canvas = document.createElement("canvas");
-  canvas.width = 250;
-  canvas.height = 250;
-
-  const ctx = canvas.getContext("2d");
-  const res = render.getContext("2d");
-  ctx.drawImage(img, 0, 0, 250, 250);
-
-  const step = () => {
-    res.clearRect(0, 0, render.width, render.height);
-    const BLOCK = 25;
-    const horiz = tick >= 200;
-    for(let i = 0; i < 500; i += BLOCK){
-      const data = horiz? ctx.getImageData(0, i, 500, BLOCK) : ctx.getImageData(i, 0, BLOCK, 500);
-      
-      let y = 0;
-      if(tick < 175) y = 125 + 10 * (5 * i + 500) * Math.pow(0.95, tick);
-      else if(tick < 200) y = 125;
-      else y = 125 + Math.pow(1.05, tick - 200 - i / 5) + Math.max(tick - 200 - i / 5, 0) / 10;
-      
-      if(horiz) res.putImageData(data, y - 125, i + 125);
-      else res.putImageData(data, i, y);
-    }
-
-    tick++;
-    if(tick > 400) tick = 0;
-  }
-
-  setTimeout(() => setInterval(step, 20), 1000);
+const setBlog = wrapper(async () => {
+	await appendBuffer({ text: "Blog", title: true });
+  
 });
-//img.src = "/imgs/pfp.jpg";
+
+let isIndex = true;
+const setAbout = () => {
+  const localIsIndex = isIndex;
+
+  abtElem.classList.remove("not-deleted");
+  abtElem.classList.add("deleted");
+  setTimeout(() => {
+    abtElem.innerText = localIsIndex? "Index": "About";
+    abtElem.href = localIsIndex? "#": "#about";
+    abtElem.classList.remove("deleted");
+    abtElem.style.opacity = "0";
+    setTimeout(() => {
+      abtElem.style.opacity = 1;
+      abtElem.classList.add("not-deleted");
+      setTimeout(() => abtElem.classList.remove("not-deleted"), 1000);
+    }, 100);
+  }, 1000 - 100);
+
+  if(isIndex) setAboutBuffer();
+  else setIndexBuffer();
+
+  isIndex = !isIndex;
+}
+
+const abtElem = document.querySelectorAll("a[data-action='about']")[0];
+abtElem.onclick = setAbout;
+
+document.body.onload = () => {
+  setTimeout(() => {
+    if(location.hash === "#about") setAbout();
+  }, 2500);
+}

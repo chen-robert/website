@@ -8,9 +8,12 @@
 
 .title {
   margin-left: 16%;
-  display: inline-block;
+  display: flex;
+  flex-wrap: wrap;
   margin-top: 25vh;
   margin-bottom: 10vh;
+
+  width: 100%;
 
   @media only screen and (max-width: @mobile-breakpoint) {
     margin-left: 0;
@@ -18,10 +21,15 @@
   }
 }
 
+.title--left {
+  width: 600px;
+}
+
 .title--container {
   position: relative;
   overflow: hidden;
   display: table;
+  min-height: 25px;
   
   @media only screen and (max-width: @mobile-breakpoint) {
     margin: 0 auto;
@@ -39,9 +47,13 @@
     animation: text @animation-duration;
 }
 
+.title--subtext {
+  font-size: 2rem;
+  font-weight: 100;
+}
 
 .title--text__secondary {
-  text-align: center;
+  padding-left: 4px;
   font-size: 1.5rem;
   color: #888;
   
@@ -79,6 +91,7 @@
 }
 
 .title--link-container {
+  padding-left: 5px;
   margin-top: 5px;
   font-size: 1.3rem;
 }
@@ -91,6 +104,11 @@
 
 .title--link {
   color: @link-color;
+  animation: text @animation-duration;
+}
+
+.title--link-container .title--link {
+  margin-right: 10px;
 }
 
 @keyframes bar {

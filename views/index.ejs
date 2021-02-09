@@ -4,6 +4,12 @@
     <title>Robert Chen</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cutive+Mono|Montserrat&display=swap">
     <link rel="stylesheet" href="/styles/main.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0">
     
     <meta property="og:locale" content="en_US">
@@ -12,41 +18,48 @@
     <meta property="og:title" content="Robert Chen - Portfolio">
     <meta property="og:description" content="My online portfolio">
     <meta property="og:url" content="https://robertchen.cc/">
+
+    <meta id="config" data-value="<%= JSON.stringify(config) %>">
     
-    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; font-src data: fonts.gstatic.com; style-src fonts.googleapis.com 'self'; script-src code.jquery.com 'self'; img-src 'self'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; font-src data: fonts.gstatic.com; style-src fonts.googleapis.com 'self'; script-src 'self'; img-src 'self'; manifest-src 'self';">
   </head>
   <body>
     <header class="header animate-listener">
       <div class="title">
-        <div class="navbar fade-in">
-          <a class="navbar--link" href="https://github.com/chen-robert" target="_blank">
-            Github
-          </a>
-          <a class="navbar--link" href="https://blog.robertchen.cc" target="_blank">
-            Blog
-          </a>
+        <div class="title--left" data-target='buffer'>
+          <div class="navbar fade-in">
+            <a class="navbar--link" href="https://github.com/chen-robert">
+              Github
+            </a>
+            <a class="navbar--link" href="#about" data-action="about">
+              About
+            </a>
+            <a class="navbar--link" data-action="blog" href="https://blog.robertchen.cc">
+              Blog
+            </a>
+          </div>
+          <div class="title--container">
+            <h1 class="title--text">
+              Robert Chen
+            </h1>
+            <div class="title--bar"></div>
+          </div>
+          <div class="title--container">
+            <h1 class="title--text title--text__secondary" data-target="about">security research and software development</h1>
+            <div class="title--bar title--bar__secondary"></div>
+          </div>
+          <div class="title--container hide-mobile">
+            <h1 class="title--text title--text__secondary">tldr; I code</h1>
+            <div class="title--bar title--bar__secondary"></div>
+          </div>
+          <div class="title--container title--link-container fade-in">
+            <a class="title--link" href="mailto:me@robertchen.cc">me@robertchen.cc</a>
+            <a class="title--link" href="https://hackerone.com/notdeghost">@notdeghost</a>
+          </div>
         </div>
-        <div class="title--container">
-          <h1 class="title--text">
-            Robert Chen
-          </h1>
-          <div class="title--bar"></div>
+        <div class="pfp">
+          <img src="/imgs/pfp.jpg" />
         </div>
-        <div class="title--container">
-          <h1 class="title--text title--text__secondary">security research and software development</h1>
-          <div class="title--bar title--bar__secondary"></div>
-        </div>
-        <div class="title--container hide-mobile">
-          <h1 class="title--text title--text__secondary">tldr; I code</h1>
-          <div class="title--bar title--bar__secondary"></div>
-        </div>
-        <div class="title--link-container fade-in">
-          <a class="title--link" href="mailto:me@robertchen.cc">me@robertchen.cc</a>
-          <a class="title--link" href="https://hackerone.com/notdeghost">@notdeghost</a>
-        </div>
-      </div>
-      <div class="pfp fade-in">
-        <img src="/imgs/pfp.jpg" />
       </div>
     </header>
     
@@ -88,5 +101,6 @@
       </div>
     </main>
     <% } %>
+    <script src="/scripts/main.js"></script>
   </body>
 </html>
