@@ -74,8 +74,15 @@ const setAboutBuffer = wrapper(async () => {
   }
 
   await appendBuffer({ text: "" });
-  //await appendBuffer({ text: "Interesting Things", subtitle: true });
-  await appendBuffer({ text: `rCTF - <a href="https://rctf.redpwn.net/" class="title--link">GitHub</a>` });
+  await appendBuffer({ text: "Stuff I've Broke", subtitle: true });
+  await appendBuffer({ text: `Chrome &#183; SBX` });
+  await appendBuffer({ text: `GitHub &#183; no-interaction XSS` });
+  await appendBuffer({ text: `ASUS Router &#183; pre-auth RCE` });
+  await appendBuffer({ text: "" });
+
+  await appendBuffer({ text: "Stuff I've Made", subtitle: true });
+  await appendBuffer({ text: `rCTF &#183; <a href="http://rctf.redpwn.net/" class="title--link">Website</a> &#183; <a href="https://github.com/redpwn/rctf" class="title--link">GitHub</a>` });
+  await appendBuffer({ text: `contest-judge &#183; <a href="https://github.com/chen-robert/contest-judge" class="title--link">GitHub</a>` });
 });
 
 const setIndexBuffer = wrapper(async () => {

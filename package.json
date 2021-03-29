@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "echo none",
-    "dev": "nodemon index.js --watch views --watch src --watch index.js --watch public --watch config.json",
+    "dev": "nodemon -e js,ejs index.js",
     "format": "prettier \"src/**/*\" --write",
     "start": "node index.js"
   },
@@ -18,11 +18,13 @@
     "prettier-cli": "^0.1.0"
   },
   "dependencies": {
+    "autoprefixer": "^10.2.4",
     "ejs": "^2.6.2",
     "express": "^4.16.3",
     "express-autoprefixer": "^5.4.0",
+    "highlight.js": "^10.6.0",
     "less-middleware": "^3.1.0",
-    "material-icons": "^0.2.3",
-    "typeface-open-sans": "0.0.54"
+    "markdown-it": "^12.0.4",
+    "postcss": "^8.2.6"
   }
 }

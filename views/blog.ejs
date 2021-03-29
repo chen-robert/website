@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("header") %>
+    <link rel="stylesheet" href="/styles/github-markdown.css">
+    <link rel="stylesheet" href="/styles/blog.css">
+    <link rel="stylesheet" href="/highlight.css">
+  </head>
+  <body>
+    <div class="wrapper markdown-body">
+      <div class="sidebar">
+        <div>
+          <div class="sidebar--title">rob</div>
+          <div class="sidebar--title sidebar--title__second">blog</div>
+        </div>
+        <div class="sidebar--expander"></div>
+        <a class="sidebar--link" href="/">robertchen.cc</a>
+        <a class="sidebar--link" href="https://twitter.com/NotDeGhost">tweeter</a>
+        <div class="sidebar--text">cybersecurity & competitive programming</div>
+      </div>
+      <div class="content">
+        <% posts.forEach(post => { %>
+          <a href="<%= post.path %>"><h2><%= post.config.get("title") %></h2></a>
+          <%- md(post.summary) %>
+          <a href="<%= post.path %>">Read More</a>
+          <div class="post--seperator"></div>
+        <% }) %>
+      </div>
+    </div>
+  </body>
+</head>
+
