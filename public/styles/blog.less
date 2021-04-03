@@ -30,7 +30,13 @@ body, html {
 
 .sidebar--title {
   user-select: none;
-  color: white;
+  & a {
+    color: white !important;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
   padding-top: 5px;
   margin-bottom: 0px;
   font-size: 30px;
