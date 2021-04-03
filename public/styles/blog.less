@@ -19,6 +19,13 @@ body, html {
 
   display: flex;
   flex-direction: column;
+  transition-duration: @quick-animation-duration;
+
+  @media @mobile {
+    &:not(.expanded) {
+      margin-left: -@sidebar-width;
+    }
+  }
 }
 
 .sidebar--title {
@@ -70,13 +77,38 @@ body, html {
   color: white !important;
 }
 
+.mobile-sidebar-ico {
+  position: fixed;
+  margin: 10px;
+
+  transition-duration: @quick-animation-duration;
+
+  border: 1px solid black;
+  box-shadow: 2px 1px 8px 1px rgba(0,0,0,0.34);
+  cursor: pointer;
+
+  & img {
+    width: 32px;
+    height: 32px;
+  }
+
+  &.expanded {
+    margin-left: @sidebar-width + 10px;
+  }
+}
+
 .content {
   padding: 15px;
   font-size: 1.1em;
   max-width: 50%;
   margin-left: @sidebar-width;
-
   padding-left: 80px;
+  
+  @media @mobile {
+    margin-left: 0;
+    max-width: 100%;
+    padding-left: 15px;
+  }
 }
 
 pre > code {
@@ -86,8 +118,8 @@ pre > code {
 }
 
 *::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 9px;
+  height: 9px;
 }
 
 *::-webkit-scrollbar-thumb {

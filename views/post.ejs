@@ -8,16 +8,7 @@
   </head>
   <body>
     <div class="wrapper markdown-body">
-      <div class="sidebar">
-        <div>
-          <div class="sidebar--title">rob</div>
-          <div class="sidebar--title sidebar--title__second">blog</div>
-        </div>
-        <div class="sidebar--expander"></div>
-        <a class="sidebar--link" href="/">robertchen.cc</a>
-        <a class="sidebar--link" href="https://twitter.com/NotDeGhost">tweeter</a>
-        <div class="sidebar--text">cybersecurity & competitive programming</div>
-      </div>
+      <%- include("sidebar") %>
       <div class="content">
         <h2><%= title %></h2>
         <%- md(content) %>

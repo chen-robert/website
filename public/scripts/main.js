@@ -77,7 +77,7 @@ const setAboutBuffer = wrapper(async () => {
   await appendBuffer({ text: "Stuff I've Broke", subtitle: true });
   await appendBuffer({ text: `Chrome &#183; SBX` });
   await appendBuffer({ text: `GitHub &#183; no-interaction XSS` });
-  await appendBuffer({ text: `ASUS Router &#183; pre-auth RCE` });
+  await appendBuffer({ text: `ASUS Router &#183; <a href="/blog/2021/03/31/asus-rce">pre-auth RCE</a>` });
   await appendBuffer({ text: "" });
 
   await appendBuffer({ text: "Stuff I've Made", subtitle: true });
