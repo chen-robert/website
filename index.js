@@ -74,6 +74,7 @@ const pathToKey = file => {
 
     // 2019-10-17-pico19-ghost-diary.md 
     config.set("title", path.basename(file, ".md").split("-").slice(3).map(a => a.toUpperCase()[0] + a.substring(1)).join(" "));
+    config.set("description", "");
 
     if(data.startsWith("---")) {
       /*
@@ -126,6 +127,7 @@ app.get("/blog/*", (req, res) => {
     res.render("post", { 
       content: post.content,
       title: post.config.get("title"),
+      description: post.config.get("description"),
       md
     });
   } else {

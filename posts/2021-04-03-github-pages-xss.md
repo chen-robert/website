@@ -1,5 +1,6 @@
 ---
 title: Breaking GitHub Private Pages for $35k
+description: Abusing CRLF, cache poisoning, and other misconfigurations for a no-interaction XSS against GitHub Private Pages. 
 ---
 
 I found and reported this vulnerability with [@ginkoid](https://twitter.com/ginkoid).

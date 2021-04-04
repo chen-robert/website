@@ -2,8 +2,13 @@
 <html lang="en">
   <head>
     <%- include("header") %>
-    <meta property="og:title" content="<%= title %>" />
-    <meta property="og:image" content="https://robertchen.cc/ghost.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:creator" content="@NotDeGhost" />
+    <meta name="twitter:image" content="https://robertchen.cc/ghost.png" />
+
+    <meta name="og:title" content="<%= title %>" />
+    <meta name="og:image" content="https://robertchen.cc/ghost.png" />
+    <meta name="og:description" content="<%= description %>" />
     <link rel="stylesheet" href="/styles/github-markdown.css">
     <link rel="stylesheet" href="/styles/blog.css">
     <link rel="stylesheet" href="/highlight.css">
