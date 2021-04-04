@@ -189,5 +189,5 @@ Overall, this vulnerability was rated at the high end of the "High" severity, wi
 
 05/21/2020 - Reported to GitHub Private Program on HackerOne
 06/20/2020 - Resolved and payout by GitHub
-04/03/2020 - Blog post published
+04/03/2021 - Blog post published
 
