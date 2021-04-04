@@ -138,7 +138,7 @@ At the same time, it's a somewhat questionable design practice. If additional pr
 
 Regardless, this caching behavior gave an easy way to escalate the severity of this attack. Because this is done on the parsed integer value, a successful cache poison with an XSS payload could affect other users who have not even interacted with a malicious payload.
 
-<video height="300" controls>
+<video controls>
   <source src="/blog/gh-xss/cache-xss.mp4">
 </video>
 
@@ -159,7 +159,7 @@ A possible misconfiguration in private pages allows public repositories to also 
 
 An example of how one might be made: 
 
-<video height="300" controls>
+<video controls>
   <source src="/blog/gh-xss/public-private.mp4">
 </video>
 
@@ -169,7 +169,7 @@ Combining this with the above, an unprivileged outside user could pivot from the
 
 Putting it all together, we have a nice POC that demonstrates how an external attacker could use an internal employee to pivot to otherwise private pages. 
 
-<video height="300" controls>
+<video controls>
   <source src="/blog/gh-xss/pivot.mp4">
 </video>
 

@@ -108,17 +108,21 @@ body, html {
   }
 }
 
+.content-wrapper {
+  width: 100%;
+  max-width: 1200px;
+}
+
 .content {
-  padding: 15px;
+  padding: 15px 80px;
   font-size: 1.1em;
-  max-width: 50%;
+  max-width: 80%;
   margin-left: @sidebar-width;
-  padding-left: 80px;
   
   @media @mobile {
     margin-left: 0;
     max-width: 100%;
-    padding-left: 15px;
+    padding: 15px;
   }
 }
 
@@ -152,6 +156,8 @@ pre > code {
   display: block;
   margin: 10px auto;
   margin-bottom: 25px;
+
+  width: 100%;
 }
 
 .post--seperator {

@@ -16,9 +16,11 @@
   <body>
     <div class="wrapper markdown-body">
       <%- include("sidebar") %>
-      <div class="content">
-        <h1><%= title %></h1>
-        <%- md(content) %>
+      <div class="content-wrapper">
+        <div class="content">
+          <h1><%= title %></h1>
+          <%- md(content) %>
+        </div>
       </div>
     </div>
   </body>
