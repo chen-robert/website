@@ -11,7 +11,7 @@
       <%- include("sidebar") %>
       <div class="content">
         <% posts.forEach(post => { %>
-          <a href="<%= post.path %>"><h2><%= post.config.get("title") %></h2></a>
+          <a href="<%= post.path %>"><h1><%= post.config.get("title") %></h1></a>
           <%- md(post.summary) %>
           <a href="<%= post.path %>">Read More</a>
           <div class="post--seperator"></div>

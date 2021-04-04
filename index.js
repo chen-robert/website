@@ -118,7 +118,7 @@ app.get("/blog", (req, res) => {
 });
 
 app.get("/blog/*", (req, res) => {
-  let key = req.originalUrl.substring("/blog/".length);
+  let key = req.path.substring("/blog/".length);
   if(key.endsWith("/")) key = key.slice(0, -1);
 
   if(posts.has(key)) {
@@ -129,7 +129,7 @@ app.get("/blog/*", (req, res) => {
       md
     });
   } else {
-    res.end("HI");
+    res.end("Not Found");
   }
 });
 

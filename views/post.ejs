@@ -2,6 +2,8 @@
 <html lang="en">
   <head>
     <%- include("header") %>
+    <meta property="og:title" content="<%= title %>" />
+    <meta property="og:image" content="https://robertchen.cc/ghost.png" />
     <link rel="stylesheet" href="/styles/github-markdown.css">
     <link rel="stylesheet" href="/styles/blog.css">
     <link rel="stylesheet" href="/highlight.css">
@@ -10,7 +12,7 @@
     <div class="wrapper markdown-body">
       <%- include("sidebar") %>
       <div class="content">
-        <h2><%= title %></h2>
+        <h1><%= title %></h1>
         <%- md(content) %>
       </div>
     </div>
