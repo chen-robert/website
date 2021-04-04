@@ -9,13 +9,15 @@
   <body>
     <div class="wrapper markdown-body">
       <%- include("sidebar") %>
-      <div class="content">
-        <% posts.forEach(post => { %>
-          <a href="<%= post.path %>"><h1><%= post.config.get("title") %></h1></a>
-          <%- md(post.summary) %>
-          <a href="<%= post.path %>">Read More</a>
-          <div class="post--seperator"></div>
-        <% }) %>
+      <div class="content-wrapper">
+        <div class="content">
+          <% posts.forEach(post => { %>
+            <a href="<%= post.path %>"><h1><%= post.config.get("title") %></h1></a>
+            <%- md(post.summary) %>
+            <a href="<%= post.path %>">Read More</a>
+            <div class="post--seperator"></div>
+          <% }) %>
+        </div>
       </div>
     </div>
   </body>
