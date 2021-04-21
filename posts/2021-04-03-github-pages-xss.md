@@ -52,7 +52,7 @@ Perhaps the best way to find vulnerabilities is to play around. As part of my in
 For example, `page_id=12345%20` would give:
 
 ```
-Set-Cookie: __Host-gh_pages_id=13212257 ; Secure; HttpOnly; path=/
+Set-Cookie: __Host-gh_pages_id=12345 ; Secure; HttpOnly; path=/
 ```
 
 This suggested psuedocode as such:

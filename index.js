@@ -32,7 +32,7 @@ app.set("view engine", "ejs");
 const staticPath = __dirname + '/public';
 app.use(lessMiddleware(staticPath));
 app.use(autoprefixer({browsers: ["last 3 versions", "> 1%"], cascade: false}));
-app.use(express.static(staticPath));
+app.use(express.static(staticPath, { maxAge: 60 * 60 * 1000 }));
 
 const config = require("./config.json");
 
@@ -105,6 +105,8 @@ const pathToKey = file => {
 })();
 
 app.get("/blog", (req, res) => {
+  res.set('Cache-control', 'public, max-age=300');
+
   const _posts = [];
   for(const [key, post] of posts.entries()) {
     _posts.push({key, post});
@@ -119,6 +121,8 @@ app.get("/blog", (req, res) => {
 });
 
 app.get("/blog/*", (req, res) => {
+  res.set('Cache-control', 'public, max-age=300');
+
   let key = req.path.substring("/blog/".length);
   if(key.endsWith("/")) key = key.slice(0, -1);
 
@@ -131,6 +135,7 @@ app.get("/blog/*", (req, res) => {
       md
     });
   } else {
+    res.status(404);
     res.end("Not Found");
   }
 });
