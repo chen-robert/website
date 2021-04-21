@@ -35,11 +35,13 @@ app.use(autoprefixer({browsers: ["last 3 versions", "> 1%"], cascade: false}));
 app.use(express.static(staticPath, { maxAge: 60 * 60 * 1000 }));
 
 const config = require("./config.json");
+const gtag = config.gtag;
 
 app.get("/", (req, res) => {
   res.render("index", {
     config,
-    title: "Robert Chen"
+    title: "Robert Chen",
+    gtag
   })
 });
 
@@ -116,7 +118,8 @@ app.get("/blog", (req, res) => {
   res.render("blog", {
     title: "Blog",
     posts: _posts.map(a => a.post),
-    md
+    md,
+    gtag
   })
 });
 
@@ -132,7 +135,8 @@ app.get("/blog/*", (req, res) => {
       content: post.content,
       title: post.config.get("title"),
       description: post.config.get("description"),
-      md
+      md,
+      gtag
     });
   } else {
     res.status(404);
