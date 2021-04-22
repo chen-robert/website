@@ -25,7 +25,7 @@ Because GitHub pages are hosted on the separate `github.io` domain, the `github.
 
 At the time of the report, GitHub's private page authentication flow was:
 
-![](/blog/gh-xss/auth-flow.jpg)
+![](/imgs/blog/gh-xss/auth-flow.jpg)
 
 More verbosely: 
 
@@ -88,7 +88,7 @@ It turns out, appending a null byte causes the integer parsing to end. In other 
 
 We get an XSS!
 
-![](/blog/gh-xss/xss.jpg)
+![](/imgs/blog/gh-xss/xss.jpg)
 
 Note that the response gets rejected if there is a null byte in the header. Thus, the null byte has to come at the beginning of the body (which means we can't perform a header injection attack).
 
@@ -102,7 +102,7 @@ The first observation is that sibling private pages in the same organization can
 
 We have an easy nonce bypass if we can somehow bypass the `__Host-` prefix protections... Simply set a fake nonce in a sibling page which will be passed down. Luckily, this prefix isn't enforced on all browsers...
 
-![](/blog/gh-xss/prefixes.jpg)
+![](/imgs/blog/gh-xss/prefixes.jpg)
 
 Well... not *all*. Looks like only IE would be vulnerable to such a bypass. We'll have to do better. 
 
@@ -139,7 +139,7 @@ At the same time, it's a somewhat questionable design practice. If additional pr
 Regardless, this caching behavior gave an easy way to escalate the severity of this attack. Because this is done on the parsed integer value, a successful cache poison with an XSS payload could affect other users who have not even interacted with a malicious payload.
 
 <video controls>
-  <source src="/blog/gh-xss/cache-xss.mp4">
+  <source src="/imgs/blog/gh-xss/cache-xss.mp4">
 </video>
 
 
@@ -160,7 +160,7 @@ A possible misconfiguration in private pages allows public repositories to also 
 An example of how one might be made: 
 
 <video controls>
-  <source src="/blog/gh-xss/public-private.mp4">
+  <source src="/imgs/blog/gh-xss/public-private.mp4">
 </video>
 
 This happens when a private page repository is changed to public. This scenario is quite plausible. For example, an organization might initially create a private repository with a corresponding private page. Later on, the organization might decide to open source the project, changing the repository status to public.
@@ -170,7 +170,7 @@ Combining this with the above, an unprivileged outside user could pivot from the
 Putting it all together, we have a nice POC that demonstrates how an external attacker could use an internal employee to pivot to otherwise private pages. 
 
 <video controls>
-  <source src="/blog/gh-xss/pivot.mp4">
+  <source src="/imgs/blog/gh-xss/pivot.mp4">
 </video>
 
 Thus, we secure the maximum CTF bonus.

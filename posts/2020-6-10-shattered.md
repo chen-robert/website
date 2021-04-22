@@ -91,7 +91,7 @@ By appending this 0x40 (`malloc(0x38)` results in a chunk of size 0x40) chunk on
 
 Getting a libc leak is still quite difficult at this point however, mainly due to the rather contrived construction of chunks and hashes. The general idea is to malloc and free a large enough chunk such that the chunk avoids the tcache and goes into the unsorted bin. Then, by overflowing into the hash of a chunk, we can extend the hash to include the fd pointer of the unsortedbin chunk. 
 
-![](https://robertchen.cc/blog/ctf/hsctf20/heap.jpg)
+![](/imgs/blog/ctf/hsctf20/heap.jpg)
 
 
 Note that the show function only checks the first 20 bytes. Thus, we are able to leak a libc address through puts.

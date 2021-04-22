@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "echo none",
+    "build": "node generate.js",
     "dev": "nodemon -e js,ejs index.js",
     "format": "prettier \"src/**/*\" --write",
     "start": "node index.js"
@@ -18,13 +18,16 @@
     "prettier-cli": "^0.1.0"
   },
   "dependencies": {
-    "autoprefixer": "^10.2.4",
+    "autoprefixer": "^10.2.5",
     "ejs": "^2.6.2",
     "express": "^4.16.3",
     "express-autoprefixer": "^5.4.0",
     "highlight.js": "^10.6.0",
+    "less": "^4.1.1",
     "less-middleware": "^3.1.0",
     "markdown-it": "^12.0.4",
-    "postcss": "^8.2.6"
+    "minify": "^7.0.1",
+    "postcss": "^8.2.10",
+    "webp-converter": "^2.3.3"
   }
 }

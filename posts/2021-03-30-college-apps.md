@@ -43,7 +43,7 @@ I wonder if this is inevitable though. Did club die because I was at the helm? O
 
 Looking back, I suppose if I had a chance to do this again, I don't think anything would've changed. The allure of college application padding is just too strong. Even if apps are a dice roll, club positions can't hurt.
 
-![](/blog/college-apps/crown.png)
+![](/imgs/blog/college-apps/crown.png)
 
 ### requiem
 
