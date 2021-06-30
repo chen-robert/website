@@ -1,0 +1,70 @@
+Lately over my senior year, I've been getting into Chrome sandbox exploitation. Having found and exploited a few sandbox escape vulnerabilities, I thought it would be fun to include these in a CTF. Unfortunately, one issue I faced while learning SBX is lack of online resources. I think conceptually, this attack surface is not exceedingly complex - at least compared to the renderer. In this blog post, I aim to provide a high level overview of SBX concepts, which will hopefully speed along the exploitation process. 
+
+This blog post will also concentrate on the Mojo interface attack surface, where I have spent most of my time. This attack surface is also more suitable for CTFs because they expose complex functionality directly to Javascript with [MojoJS bindings](https://chromium.googlesource.com/chromium/src/+/refs/heads/main/mojo/public/js/README.md). As a note, as of the time of writing the documentation for MojoJS bindings is unfortunately quite lacking, which will hopefully be partially remedied through this post. 
+
+## What is SBX
+
+In terms of exploitation, I blackbox the sandboxing internals and assume it works as intended. Thus, the goal is to find a vulnerability in the IPC channels between the sandboxed renderer process and the privileged browser process. Note that on some platforms, certain utility processes may have more privileges. For example, the Network Service runs in process [on Android](https://bugs.chromium.org/p/chromium/issues/detail?id=1049008). 
+
+## Mojom Interfaces
+
+From the renderer process, we are able to interact with the browser process in a variety of ways. One way is through [Mojom interfaces](https://chromium.googlesource.com/chromium/src/+/HEAD/mojo/public/tools/bindings/README.md). These `.mojom` files define the format and methods in which IPC can occur. One thing to note is that Mojo interactions are largely asynchronous. For example, you will need to pass in a callback or await a promise in order to get the return value of a mojom method call (unless the method is annotated with `[Sync]`). 
+
+Conceptually, these interfaces have a remote end and a receiver end. A method call on the remote end - for example through the MojoJS bindings - will eventually lead to a method call on the implementation on the receiver end. The receiver can be bound in any process, although for SBX it will almost always be bound in the browser. Mojo internals will handle all of the message routing. 
+
+![](data:image/png;base64,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)
+
+### MojoJS Bindings
+
+We've talked a lot about MojoJS bindings at a high level, but how do you actually use them? 
+
+< TODO generate  mojojs bindings >
+
+After generating the mojojs bindings, you will want to load them from js. For example:
+
+```html
+<script src="/mojojs/mojo_bindings.js"></script>
+<script src="/mojojs/gen/third_party/blink/public/mojom/appcache/appcache.mojom.js"></script>
+<script>
+  // Do exploit
+</script>
+```
+
+Now that you have the mojo js bindings loaded, you will want to bind your first interface. To do this, you will need to create a "remote" in javascript. We then want to pass the receiver to the browser process. Recall that method invocations on our remote will then be passed to the receiver in the browser process. 
+
+To bind our receiver, we use the `Mojo.bindInterface` javascript method, which passes to [Mojo::bindInterface](Mojo::bindInterface). 
+
+We then stick the interface we want to bind into the magic formula below: 
+
+```javascript
+  const ptr = new {{module_path}}.{{interface_name}}Ptr();
+  Mojo.bindInterface({{module_path}}.{{interface_name}}.name, mojo.makeRequest(ptr).handle);
+```
+
+For example, if we wanted to bind an AppCacheBackend defined in [appcache.mojom](https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/public/mojom/appcache/appcache.mojom). 
+
+- `module_path`: `blink.mojom`
+- `interface_name`: `AppCacheBackend`
+
+```javascript
+  const ptr = new blink.mojom.AppCacheBackendPtr();
+  Mojo.bindInterface(blink.mojom.AppCacheBackend.name, mojo.makeRequest(ptr).handle);
+```
+
+We would then be able to perform method invocations on the `ptr` object. For example, we could call the `RegisterHost` method with `ptr.registerHost`. Note how the case changes. **All method and variable names are camelcased in MojoJS bindings.**
+
+## Threading
+
+Threading with MojoJS is one of the more complex components, and thread manipulation in the browser process allows for some very interesting exploits. 
+
+Recall that at a high level, a method invocation on a remote somehow results in a call on the receiver implementation. Naturally, the question arises: what happens in between? 
+
+In the browser process, there are two named threads: IO and UI. Mojo messages are processed on the IO thread. The thread on which the receiver implementation is bound (or if there is a specific task runner passed to the bound receiver) is the thread on which the implementation methods will be called. 
+
+For example, the AppCacheBackend implementation is [bound on the UI thread](https://source.chromium.org/chromium/chromium/src/+/main:content/browser/appcache/chrome_appcache_service.cc;l=49-51;drc=c14f6f4b9c44fe479a8d004576b42723b2a5feb6;bpv=1;bpt=1) -- it's not immediately clear from this linked code but you can trace backwards to PopulateFrameBinders. Thus, all the methods of [AppCacheBackendImpl](https://source.chromium.org/chromium/chromium/src/+/main:content/browser/appcache/appcache_backend_impl.h;drc=c14f6f4b9c44fe479a8d004576b42723b2a5feb6;l=21) would be invoked on the UI thread. 
+
+If an interface is bound on the IO thread, there will not be a thread hop, nor will the mojo parser post the task to be executed later. Instead, the method will be directly invoked. An interesting observation is that by blocking the IO thread, we are able to block future Mojo messages from being posted. 
+
+On the other hand, if the interface is bound on a different thread, for example the UI thread, a thread hop will occur and the method will run asynchronously. 
+
+Threading is probably not a serious consideration during CTFs, but understanding such internals may be important for improving reliability of any given exploit. 
