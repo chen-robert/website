@@ -6,14 +6,13 @@ const ejs = require("ejs");
 const less = require("less");
 const minify = require('minify');
 const webp = require("webp-converter");
+const yaml = require("yaml");
 
 const autoprefixer = require('autoprefixer')
 const postcss = require('postcss')
 
 const OUTPUT_DIR = path.join(__dirname, "build");
 const PUBLIC_DIR = path.join(__dirname, "public");
-
-
 
 const hljs = require('highlight.js'); 
 const marked = require('markdown-it')({
@@ -156,25 +155,27 @@ const pathToKey = file => {
     const data = (await fs.readFile(file)).toString().trim();
     
     let content = data;
-    let config = new Map();
+    let postConfig = new Map();
 
     // 2019-10-17-pico19-ghost-diary.md 
-    config.set("title", path.basename(file, ".md").split("-").slice(3).map(a => a.toUpperCase()[0] + a.substring(1)).join(" "));
-    config.set("description", "");
+    postConfig.set("title", path.basename(file, ".md").split("-").slice(3).map(a => a.toUpperCase()[0] + a.substring(1)).join(" "));
+    postConfig.set("description", "");
+    postConfig.set("tags", []);
 
     if(data.startsWith("---")) {
       /*
       ---
-      key: value
+      <yaml>
       ---
-      post
+      <post>
       */
       const configData = data.split("---")[1].trim();
 
-      configData.split("\n").forEach(line => {
-        const [key, value] = line.split(": ");
-        config.set(key, value);
-      });
+      const yamlData = yaml.parse(configData);
+
+      for (const key in yamlData) {
+        postConfig.set(key, yamlData[key]);
+      }
 
       content = data.split("---").slice(2).join("---");
     }
@@ -184,7 +185,7 @@ const pathToKey = file => {
     posts.set(pathToKey(file), {
       content,
       summary,
-      config,
+      config: postConfig,
       path: "/blog/" + pathToKey(file)
     }); 
   }
@@ -196,14 +197,20 @@ const pathToKey = file => {
     }
     _posts.sort((a, b) => b.key.localeCompare(a.key));
 
-    const data = await ejs.renderFile(path.join(__dirname, "views/blog.ejs"), {
-      title: "Blog",
-      posts: _posts.map(a => a.post),
-      md,
-      gtag
-    });
-
-    await fs.writeFile(await getNewPath("blog.html"), await ops["html"](data));
+    const { postsPerPage } = config.blog;
+    
+    for (let i = 0; i < _posts.length; i += postsPerPage) {
+      const data = await ejs.renderFile(path.join(__dirname, "views/blog.ejs"), {
+        title: "Blog",
+        posts: _posts.slice(i, i + postsPerPage).map(a => a.post),
+        md,
+        gtag
+      });
+    
+      if (i == 0) await fs.writeFile(await getNewPath("blog.html"), await ops["html"](data));
+      
+      await fs.writeFile(await getNewPath(`blog/${i / postsPerPage}.html`), await ops["html"](data));
+    }
   }
 
   {

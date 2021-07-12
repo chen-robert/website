@@ -8,7 +8,8 @@
     "build": "node generate.js",
     "dev": "nodemon -e js,ejs index.js",
     "format": "prettier \"src/**/*\" --write",
-    "start": "node index.js"
+    "start": "node index.js",
+    "serve": "node serve.js"
   },
   "author": "Robert Chen",
   "license": "ISC",
@@ -28,6 +29,7 @@
     "markdown-it": "^12.0.4",
     "minify": "^7.0.1",
     "postcss": "^8.2.10",
-    "webp-converter": "^2.3.3"
+    "webp-converter": "^2.3.3",
+    "yaml": "^1.10.2"
   }
 }
