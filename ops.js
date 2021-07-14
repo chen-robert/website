@@ -28,7 +28,7 @@ ops["js"] = async (data) => {
   return minify.js(data);
 }
 
-ops["css"] = async (data, filepath) => {
+ops["css"] = async (data) => {
   const result = await postcss([ autoprefixer() ]).process(data);
 
   if(result.css) {
