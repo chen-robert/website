@@ -111,44 +111,41 @@ const pathToTitle = file => {
       path: "/blog/" + pathToKey(file)
     }); 
   }
-
   posts.sort((a, b) => b.path.localeCompare(a.path));
 
   const ejsConfig = {
     md,
     gtag: config.gtag
   }
+
+  const toWrite = [];
   
-  {
-    const { postsPerPage } = config.blog;
-    
-    for (let i = 0; i < posts.length; i += postsPerPage) {
-      const data = await ejs.renderFile(path.join(__dirname, "views/blog.ejs"), {
-        ...ejsConfig,
-        title: "Blog",
-        posts: posts.slice(i, i + postsPerPage)
-      });
-    
-      if (i == 0) await fs.writeFile(await getNewPath("blog.html"), await ops["html"](data));
+  const { postsPerPage } = config.blog;
+  for (let i = 0; i < posts.length; i += postsPerPage) {
+    const data = await ejs.renderFile(path.join(__dirname, "views/blog.ejs"), {
+      ...ejsConfig,
+      title: "Blog",
+      posts: posts.slice(i, i + postsPerPage)
+    });
+  
+    if (i == 0) {
+      toWrite.push({ path: "blog.html", data });
+      toWrite.push({ path: "blog/index.html", data });
+    }
       
-      await fs.writeFile(await getNewPath(`blog/${i / postsPerPage}.html`), await ops["html"](data));
-    }
+    toWrite.push({ path: `blog/${i / postsPerPage}.html`, data });
   }
 
-  {
-    for (const post of posts) {
-      const data = await ejs.renderFile(path.join(__dirname, "views/post.ejs"), { 
-        ...ejsConfig,
-        content: post.content,
-        title: post.config.get("title"),
-        description: post.config.get("description")
-      });
-    
-      await fs.writeFile(await getNewPath(post.path + ".html"), await ops["html"](data));
-    }
+  for (const post of posts) {
+    const data = await ejs.renderFile(path.join(__dirname, "views/post.ejs"), { 
+      ...ejsConfig,
+      content: post.content,
+      title: post.config.get("title"),
+      description: post.config.get("description")
+    });
+
+    toWrite.push({ path: post.path + ".html", data });
   }
-
-
 
   {
     const data = await ejs.renderFile(path.join(__dirname, "views/index.ejs"), {
@@ -157,8 +154,10 @@ const pathToTitle = file => {
       title: "Robert Chen",
     });
 
-    await fs.writeFile(await getNewPath("index.html"), await ops["html"](data));
+    toWrite.push({ path: "index.html", data });
   }
-
-
+  
+  await Promise.all(
+    toWrite.map(async ({ path, data }) => fs.writeFile(await getNewPath(path), await ops["html"](data)))
+  );
 })();
