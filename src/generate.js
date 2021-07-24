@@ -93,7 +93,6 @@ const pathToDate = file => {
 }
 
 ;(async () => {
-  await fs.rmdir(OUTPUT_DIR, { recursive: true });
   await buildPublic();
 
   const posts = [];
