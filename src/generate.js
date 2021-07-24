@@ -79,7 +79,7 @@ const pathToDate = file => {
 
   const parts = path.basename(file).split("-");
   ret.setYear(parts[0]);
-  ret.setMonth(+parts[1] - 1);
+  ret.setMonth(Number(parts[1]) - 1);
   ret.setDate(parts[2]);
   
   return ret;
@@ -172,9 +172,7 @@ const pathToDate = file => {
     toWrite.push({ path: "index.html", data });
   }
   
-  await Promise.all(
-    toWrite.map(async ({ path, data }) => fs.writeFile(await getNewPath(path), await ops["html"](data)))
-  );
+  await Promise.all(toWrite.map(async ({ path, data }) => fs.writeFile(await getNewPath(path), await ops["html"](data))));
 
   await fs.writeFile(await getNewPath("feed.xml"), genRSS(posts));
 })();
