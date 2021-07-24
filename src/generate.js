@@ -4,7 +4,14 @@ const path = require("path");
 const ejs = require("ejs");
 const yaml = require("yaml");
 
-const { newPathCreate, getNewPath, getFiles, OUTPUT_DIR } = require("./util.js");
+const { 
+  newPathCreate, 
+  getNewPath, 
+  getFiles, 
+  OUTPUT_DIR, 
+  PUBLIC_DIR,
+  ROOT_DIR
+} = require("./util.js");
 const ops = require("./ops.js");
 const genRSS = require("./rss.js");
 
@@ -29,10 +36,10 @@ const marked = require('markdown-it')({
 });
 const md = marked.render.bind(marked);
 
-const config = require("./config.json");
+const config = require("../config.json");
 
 const buildPublic = async () => {
-  for await (const filepath of getFiles(path.join(__dirname, "public"))) {
+  for await (const filepath of getFiles(PUBLIC_DIR)) {
     const data = await fs.readFile(filepath, 'utf-8');
     const ext = path.extname(filepath).substring(".".length);
     if(Object.keys(ops).includes(ext)) {
@@ -52,7 +59,7 @@ const buildPublic = async () => {
     }
   }
   
-  await fs.copyFile(path.join(__dirname, "/node_modules/highlight.js/styles/default.css"), await getNewPath("highlight.css"));
+  await fs.copyFile(path.join(ROOT_DIR, "/node_modules/highlight.js/styles/default.css"), await getNewPath("highlight.css"));
 }
 
 // 2019-10-17-pico19-ghost-diary.md 
@@ -137,7 +144,7 @@ const pathToDate = file => {
   
   const { postsPerPage } = config.blog;
   for (let i = 0; i < posts.length; i += postsPerPage) {
-    const data = await ejs.renderFile(path.join(__dirname, "views/blog.ejs"), {
+    const data = await ejs.renderFile(path.join(ROOT_DIR, "views/blog.ejs"), {
       ...ejsConfig,
       title: "Blog",
       posts: posts.slice(i, i + postsPerPage)
@@ -152,7 +159,7 @@ const pathToDate = file => {
   }
 
   for (const post of posts) {
-    const data = await ejs.renderFile(path.join(__dirname, "views/post.ejs"), { 
+    const data = await ejs.renderFile(path.join(ROOT_DIR, "views/post.ejs"), { 
       ...ejsConfig,
       content: post.content,
       config: post.config,
@@ -163,7 +170,7 @@ const pathToDate = file => {
   }
 
   {
-    const data = await ejs.renderFile(path.join(__dirname, "views/index.ejs"), {
+    const data = await ejs.renderFile(path.join(ROOT_DIR, "views/index.ejs"), {
       ...ejsConfig,
       config,
       title: "Robert Chen",

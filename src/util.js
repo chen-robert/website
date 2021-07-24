@@ -1,10 +1,11 @@
 const fs = require("fs").promises;
 const path = require("path");
 
-const config = require("./config.json");
+const config = require("../config.json");
 
-const OUTPUT_DIR = path.join(__dirname, config.blog.outputDir);
-const PUBLIC_DIR = path.join(__dirname, config.blog.publicDir);
+const ROOT_DIR = path.join(__dirname, "..");
+const OUTPUT_DIR = path.join(ROOT_DIR, config.blog.outputDir);
+const PUBLIC_DIR = path.join(ROOT_DIR, config.blog.publicDir);
 
 const newPathCreate = async oldPath => {
   if(!oldPath.startsWith(PUBLIC_DIR)) throw "Invalid newPath";
@@ -41,5 +42,7 @@ module.exports = {
   newPathCreate,
   getNewPath,
   getFiles,
-  OUTPUT_DIR
+  OUTPUT_DIR,
+  PUBLIC_DIR,
+  ROOT_DIR
 }

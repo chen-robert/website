@@ -1,6 +1,6 @@
 const xml = require("xml");
 
-const config = require("./config.json");
+const config = require("../config.json");
 
 const blogURL = `https://${config.host}${config.blog.path}`;
 const websiteURL = `https://${config.host}`;
