@@ -40,5 +40,6 @@ async function* getFiles(dir, extension) {
 module.exports = { 
   newPathCreate,
   getNewPath,
-  getFiles
+  getFiles,
+  OUTPUT_DIR
 }

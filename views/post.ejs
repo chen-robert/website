@@ -6,9 +6,9 @@
     <meta name="twitter:creator" content="@NotDeGhost" />
     <meta name="twitter:image" content="https://robertchen.cc/ghost.png" />
 
-    <meta name="og:title" content="<%= title %>" />
+    <meta name="og:title" content="<%= config.title %>" />
     <meta name="og:image" content="https://robertchen.cc/ghost.png" />
-    <meta name="og:description" content="<%= description %>" />
+    <meta name="og:description" content="<%= config.description %>" />
     <link rel="stylesheet" href="/styles/github-markdown.css">
     <link rel="stylesheet" href="/styles/blog.css">
     <link rel="stylesheet" href="/highlight.css">
@@ -18,8 +18,8 @@
       <%- include("sidebar") %>
       <div class="content-wrapper">
         <div class="content">
-          <h1><%= title %></h1>
-          <%- md(content) %>
+          <h1><%= config.title %></h1>
+          <%- content %>
         </div>
       </div>
     </div>

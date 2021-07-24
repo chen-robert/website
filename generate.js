@@ -4,8 +4,9 @@ const path = require("path");
 const ejs = require("ejs");
 const yaml = require("yaml");
 
-const { newPathCreate, getNewPath, getFiles } = require("./util.js");
+const { newPathCreate, getNewPath, getFiles, OUTPUT_DIR } = require("./util.js");
 const ops = require("./ops.js");
+const genRSS = require("./rss.js");
 
 const hljs = require('highlight.js'); 
 const marked = require('markdown-it')({
@@ -70,7 +71,22 @@ const pathToTitle = file => {
   return path.basename(file, ".md").split("-").slice(3).map(a => a.toUpperCase()[0] + a.substring(1)).join(" ")
 }
 
+// 2019-10-17-pico19-ghost-diary.md 
+// => Date corresponding to 2019-10-17
+const pathToDate = file => {
+  const ret = new Date(0);
+  ret.setHours(0);
+
+  const parts = path.basename(file).split("-");
+  ret.setYear(parts[0]);
+  ret.setMonth(+parts[1] - 1);
+  ret.setDate(parts[2]);
+  
+  return ret;
+}
+
 ;(async () => {
+  await fs.rmdir(OUTPUT_DIR, { recursive: true });
   await buildPublic();
 
   const posts = [];
@@ -78,11 +94,11 @@ const pathToTitle = file => {
     const data = (await fs.readFile(file)).toString().trim();
     
     let content = data;
-    let postConfig = new Map();
+    let postConfig = Object.create(null);
 
-    postConfig.set("title", pathToTitle(file));
-    postConfig.set("description", "");
-    postConfig.set("tags", []);
+    postConfig.title = pathToTitle(file);
+    postConfig.description = "";
+    postConfig.tags = [];
 
     if(data.startsWith("---")) {
       /*
@@ -94,9 +110,8 @@ const pathToTitle = file => {
       const configData = data.split("---")[1].trim();
 
       const yamlData = yaml.parse(configData);
-
       for (const key in yamlData) {
-        postConfig.set(key, yamlData[key]);
+        postConfig[key] = yamlData[key];
       }
 
       content = data.split("---").slice(2).join("---");
@@ -105,16 +120,16 @@ const pathToTitle = file => {
     const summary = content.split("<!--more-->")[0];
 
     posts.push({
-      content,
-      summary,
+      content: md(content),
+      summary: md(summary),
       config: postConfig,
-      path: "/blog/" + pathToKey(file)
+      path: "/blog/" + pathToKey(file),
+      timestamp: pathToDate(file)
     }); 
   }
   posts.sort((a, b) => b.path.localeCompare(a.path));
 
   const ejsConfig = {
-    md,
     gtag: config.gtag
   }
 
@@ -140,8 +155,8 @@ const pathToTitle = file => {
     const data = await ejs.renderFile(path.join(__dirname, "views/post.ejs"), { 
       ...ejsConfig,
       content: post.content,
-      title: post.config.get("title"),
-      description: post.config.get("description")
+      config: post.config,
+      title: post.config.title,
     });
 
     toWrite.push({ path: post.path + ".html", data });
@@ -160,4 +175,6 @@ const pathToTitle = file => {
   await Promise.all(
     toWrite.map(async ({ path, data }) => fs.writeFile(await getNewPath(path), await ops["html"](data)))
   );
+
+  await fs.writeFile(await getNewPath("feed.xml"), genRSS(posts));
 })();

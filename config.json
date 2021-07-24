@@ -4,6 +4,9 @@
   "blog": {
     "postsPerPage": 500,
     "outputDir": "build",
-    "publicDir": "public"
-  }
+    "publicDir": "public",
+    "path": "/blog"
+  },
+  "host": "robertchen.cc",
+  "email": "me@robertchen.cc"
 }

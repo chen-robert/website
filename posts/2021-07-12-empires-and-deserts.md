@@ -5,12 +5,13 @@ tags:
   - Chrome SBX
 ---
 
-This is an author writeup for the paired Chrome sandbox escape I made for redpwnCTF 2021, `Empires` and `Deserts`. 
-## Introduction
+This is an author writeup for the paired Chrome sandbox escape I made [for redpwnCTF 2021](https://github.com/redpwn/redpwnctf-2021-challenges/tree/master/pwn/empires), `Empires` and `Deserts`. 
 
 When writing this challenge, I wanted to create a sandbox escape where the solution is not obvious. In other words, the difficulty of the challenge arises not from exploiting the vulnerability - but in finding the vulnerability itself. 
 
 <!--more-->
+
+## Introduction
 
 I think most good challenges have a thesis behind them. They explore a previously undiscovered avenue of thought, opening up new possibilities for exploitation. For example, [Teleport from Google CTF 2020](https://ctftime.org/task/12818) asks the question: what can we do with an arbitrary read in browser land? 
 
