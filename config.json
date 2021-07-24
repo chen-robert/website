@@ -8,5 +8,8 @@
     "path": "/blog"
   },
   "host": "robertchen.cc",
-  "email": "me@robertchen.cc"
+  "me": {
+    "email": "me@robertchen.cc",
+    "name": "Robert Chen"
+  }
 }

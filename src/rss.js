@@ -15,6 +15,7 @@ const buildFeed = posts => {
         { title: post.config.title },
         { pubDate: post.timestamp.toUTCString() },
         { link: postURL },
+        { guid: postURL },
         {
           description: {
             _cdata: post.content
@@ -40,7 +41,7 @@ module.exports = posts => {
           {
             "atom:link": {
               _attr: {
-                href: `${websiteURL}feed.xml`,
+                href: `${websiteURL}/feed.xml`,
                 rel: "self",
                 type: "application/rss+xml",
               },
@@ -50,7 +51,7 @@ module.exports = posts => {
           { link: blogURL },
           { description: "A collection of some thoughts, occasionally security related" },
           { language: "en-US" },
-          { webMaster: config.email },
+          { webMaster: `${config.me.email} (${config.me.name})` },
           ...buildFeed(posts)
         ],
       },

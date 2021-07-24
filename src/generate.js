@@ -126,8 +126,8 @@ const pathToDate = file => {
     const summary = content.split("<!--more-->")[0];
 
     posts.push({
-      content: md(content),
-      summary: md(summary),
+      content: await ops["html"](md(content)),
+      summary: await ops["html"](md(summary)),
       config: postConfig,
       path: "/blog/" + pathToKey(file),
       timestamp: pathToDate(file)
