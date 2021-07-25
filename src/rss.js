@@ -1,4 +1,5 @@
 const xml = require("xml");
+const cheerio = require("cheerio");
 
 const config = require("../config.json");
 
@@ -7,8 +8,20 @@ const websiteURL = `https://${config.host}`;
 
 const buildFeed = posts => {
   posts.sort((a, b) => b.path.localeCompare(a.path));
-  
+
   return posts.map(post => {
+    const $ = cheerio.load(post.content);
+
+    $("a[href^='/'], img[src^='/'], source[src^='/']").each((i, elem) => {
+      const $elem = $(elem);
+      if ($elem.attr("href")) {
+        $elem.attr("href", `${websiteURL}${$elem.attr("href")}`);
+      }
+      if ($elem.attr("src")) {
+        $elem.attr("src", `${websiteURL}${$elem.attr("src")}`);
+      }
+    });
+
     const postURL = `${websiteURL}${post.path}`;
     return {
       item: [
@@ -18,7 +31,7 @@ const buildFeed = posts => {
         { guid: postURL },
         {
           description: {
-            _cdata: post.content
+            _cdata: $.html()
           }
         }
       ]

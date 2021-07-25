@@ -3,6 +3,8 @@ const webp = require("webp-converter");
 const minify = require('minify');
 const postcss = require('postcss');
 const autoprefixer = require('autoprefixer');
+const cheerio = require("cheerio");
+
 const fs = require("fs").promises;
 const path = require("path");
 
@@ -21,7 +23,31 @@ ops["png"] = async (data, filepath) => {
 ops["jpg"] = ops["png"];
 
 ops["html"] = async (data) => {
-  return minify.html(data);
+  const $ = cheerio.load(data);
+
+  $("img[src^='/']").each((idx, elem) => {
+    const $elem = $(elem);
+    
+    const $pic = $("<picture/>");
+
+
+    let $source = $("<source/>");
+    $source.attr("srcset", $elem.attr("src").split(".").slice(0, -1) + ".webp");
+    $source.attr("type", "image/webp");
+    $pic.append($source);
+    
+    $source = $("<source/>");
+    $source.attr("srcset", $elem.attr("src"));
+    $pic.append($source);
+
+    $source = $("<img/>");
+    $source.attr("src", $elem.attr("src"));
+    $pic.append($source);
+
+    $elem.replaceWith($pic);
+  });
+
+  return minify.html($.html());
 }
 
 ops["js"] = async (data) => {
