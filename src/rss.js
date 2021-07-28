@@ -12,7 +12,7 @@ const buildFeed = posts => {
   return posts.map(post => {
     const $ = cheerio.load(post.content);
 
-    $("a[href^='/'], img[src^='/'], source[srcset^='/']").each((i, elem) => {
+    $("a[href^='/'], img[src^='/'], source[srcset^='/'], source[src^='/']").each((i, elem) => {
       const $elem = $(elem);
       if ($elem.attr("href")) {
         $elem.attr("href", `${websiteURL}${$elem.attr("href")}`);
