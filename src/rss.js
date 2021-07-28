@@ -12,13 +12,16 @@ const buildFeed = posts => {
   return posts.map(post => {
     const $ = cheerio.load(post.content);
 
-    $("a[href^='/'], img[src^='/'], source[src^='/']").each((i, elem) => {
+    $("a[href^='/'], img[src^='/'], source[srcset^='/']").each((i, elem) => {
       const $elem = $(elem);
       if ($elem.attr("href")) {
         $elem.attr("href", `${websiteURL}${$elem.attr("href")}`);
       }
       if ($elem.attr("src")) {
         $elem.attr("src", `${websiteURL}${$elem.attr("src")}`);
+      }
+      if ($elem.attr("srcset")) {
+        $elem.attr("srcset", `${websiteURL}${$elem.attr("srcset")}`);
       }
     });
 
