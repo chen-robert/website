@@ -14,7 +14,8 @@
           <% posts.forEach(post => { %>
             <a href="<%= post.path %>"><h1><%= post.config.title %></h1></a>
             <%- post.summary %>
-            <a href="<%= post.path %>">Read More</a>
+            <p>
+            <a href="<%= post.path %>">Read More</a></p>
             <div class="post--seperator"></div>
           <% }) %>
         </div>

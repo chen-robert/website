@@ -16,20 +16,20 @@ const clearBuffer = async () => {
 const bufferElem = document.querySelectorAll("[data-target='buffer']")[0];
 const textTemplate = text => `
 <div class="title--container">
-	<h1 class="title--text title--text__secondary">${text}</h1>
+  <h1 class="title--text title--text__secondary">${text}</h1>
 </div>`;
 const titleTemplate = text => `
 <div class="title--container">
-	<h1 class="title--text">${text}</h1>
+  <h1 class="title--text">${text}</h1>
 </div>`;
 const subtitleTemplate = text => `
 <div class="title--container">
-	<h1 class="title--text title--subtext">${text}</h1>
+  <h1 class="title--text title--subtext">${text}</h1>
 </div>`;
 const linkTemplate = links => {
-	let ret = `<div class="title--container title--link-container">`;
+  let ret = `<div class="title--container title--link-container">`;
   for(const link of links) {
-	  ret += `<a class="title--link" href="${link.url}">${link.text}</a>`
+    ret += `<a class="title--link" href="${link.url}">${link.text}</a>`
   }
   ret += `</div>`;
   return ret;
@@ -67,7 +67,7 @@ const wrapper = fn => async () => {
 }
 
 const setAboutBuffer = wrapper(async () => {
-	await appendBuffer({ text: "About", title: true });
+  await appendBuffer({ text: "About", title: true });
   const lines = [...config.about.split("\n")];
   for(const line of lines) {
     await appendBuffer({ text: line });
@@ -75,9 +75,8 @@ const setAboutBuffer = wrapper(async () => {
 
   await appendBuffer({ text: "" });
   await appendBuffer({ text: "Stuff I've Broke", subtitle: true });
-  await appendBuffer({ text: `Chrome &#183; SBX` });
-  await appendBuffer({ text: `GitHub &#183; <a href="/blog/2021/04/03/github-pages-xss">no-interaction XSS</a>` });
-  await appendBuffer({ text: `ASUS Router &#183; <a href="/blog/2021/03/31/asus-rce">pre-auth RCE</a>` });
+  await appendBuffer({ text: `GitHub &#183; <a href="/blog/2021/04/03/github-pages-xss">Pages</a>, Codespaces` });
+  await appendBuffer({ text: `ASUS &#183; <a href="/blog/2021/03/31/asus-rce">RT-AC68U</a>` });
   await appendBuffer({ text: "" });
 
   await appendBuffer({ text: "Stuff I've Made", subtitle: true });
@@ -86,7 +85,7 @@ const setAboutBuffer = wrapper(async () => {
 });
 
 const setIndexBuffer = wrapper(async () => {
-	await appendBuffer({ text: "Robert Chen", title: true });
+  await appendBuffer({ text: "Robert Chen", title: true });
   const lines = ["security research and software development", "tldr; I code"];
   for(const line of lines) {
     await appendBuffer({ text: line });
@@ -100,7 +99,7 @@ const setIndexBuffer = wrapper(async () => {
 });
 
 const setBlog = wrapper(async () => {
-	await appendBuffer({ text: "Blog", title: true });
+  await appendBuffer({ text: "Blog", title: true });
   
 });
 

@@ -8,7 +8,6 @@ const {
   newPathCreate, 
   getNewPath, 
   getFiles, 
-  OUTPUT_DIR, 
   PUBLIC_DIR,
   ROOT_DIR
 } = require("./util.js");
