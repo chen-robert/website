@@ -1,0 +1,29 @@
+Putting some stuff here until I find a better way to organize it..
+
+GitHub
+- Private Pages (https://robertchen.cc/blog/2021/04/03/github-pages-xss)
+- Codespaces
+- Codeload (binary application -- a bit unexpected)
+- XS-Search -- architectural issues :(
+
+ASUS RT-AC68U
+- Some interesting higher level vulns (SQLi + off by slash): https://robertchen.cc/blog/2021/03/31/asus-rce
+
+Chromium
+- SBX
+
+Android
+- Mali GPU Driver LPE
+
+NPM
+- Writeup soon
+
+Windows LPEs (same vuln class reported to multiple vendors via https://hackerone.com/deepsurface-robert)
+- CVE-2021-22921 (Node): https://deepsurface.com/deepsurface-security-advisory-lpe-node-js-windows-cve-2021-22921/
+- CVE-2021-29221 (Erlang)
+- CVE-2021-22117 (RabbitMQ)
+- CVE-2021-26556 (OctopusDeploy)
+
+Other
+- Discord XSS
+- DingTalk message forging (https://www.dingtalk.com/en)

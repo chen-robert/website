@@ -1,0 +1,23 @@
+Same deal as /vulns.txt
+
+CTF Challenges
+- Empires and Deserts (Chromium IPC vuln): https://robertchen.cc/blog/2021/07/12/empires-and-deserts
+- Adult CSP (Chromium UAF): https://robertchen.cc/blog/2021/02/07/adult-csp
+
+Tutorials:
+- Brief intro to Mojo: https://robertchen.cc/blog/2021/07/07/sbx-intro
+
+WAF Bypass (HacktivityCon 2020)
+- https://www.hacker101.com/conferences/hacktivitycon/waf.html
+
+rCTF (CTF platform)
+- http://rctf.redpwn.net/
+
+This website (static site gen written for fun)
+- https://github.com/chen-robert/website
+
+Solve script dump
+- https://github.com/chen-robert/writeups
+
+Minor Contributions:
+- dicersicer (DEFCON 2021 infrastructure)
