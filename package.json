@@ -23,6 +23,7 @@
     "highlight.js": "^10.6.0",
     "less": "^4.1.1",
     "markdown-it": "^12.0.4",
+    "markdown-it-anchor": "^8.3.0",
     "minify": "^7.0.1",
     "postcss": "^8.2.10",
     "webp-converter": "^2.3.3",
