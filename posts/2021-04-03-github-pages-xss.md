@@ -19,7 +19,7 @@ This particular bounty was reported as part of GitHub's private pages private bu
 - $10k: Reading the flag at `flag.private-org.github.io` without user interaction. $5k additional bonus if the flag is read from an account outside the `private-org` organization.
 - $5k: Reading the flag at `flag.private-org.github.io` with user interaction.
 
-## Authentication Flow
+### Authentication Flow
 
 Because GitHub pages are hosted on the separate `github.io` domain, the `github.com` authentication cookies are not sent to the private pages server. Thus, private page authentication has no way to determine a user's identity without additional integration with `github.com`. Hence, GitHub created a custom authentication flow (introducing the possibility of bugs!)
 
