@@ -1,0 +1,55 @@
+@import "config";
+
+.toc--padding {
+	height: 15px;
+}
+
+.toc--title > a {
+	text-decoration: none;
+	font-family: Arial;
+	color: white;
+	position: relative;
+
+	&:not(.unclickable):before {
+		content: "";
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		background-color: white;
+
+		height: 10%;
+		width: 0;
+		transition: all @quick-animation-duration;
+	}
+	&:not(.unclickable):hover:before {
+		width: 100%;
+		left: 0;
+		transition: all @quick-animation-duration;
+	}
+
+	&.unclickable {
+		pointer-events: none;
+	}
+}
+
+.toc--title {
+	color: white;
+	white-space: nowrap;
+	overflow-x: hidden;
+	text-overflow: ellipsis;
+	width: 100%;
+}
+
+.toc--section {
+	margin-left: 5px;
+	transition-duration: 1s;
+}
+
+.sidebar > .toc--section {
+	max-height: calc(100vh - 200px);
+	overflow-y: scroll;
+}
+
+.toc--seperator {
+	height: 10px;
+}

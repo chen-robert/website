@@ -3,17 +3,27 @@
   "version": "1.0.0",
   "description": "My personal website",
   "main": "index.js",
+  "watch": {
+    "build": {
+      "patterns": ["src", "public", "views", "posts"],
+			"extensions": "js,ejs,less,md",
+      "ignore": "build"
+    }
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node src/generate.js",
     "format": "eslint src/*.js --fix",
-    "serve": "node src/serve.js"
+    "serve": "node src/serve.js",
+    "dev": "concurrently --kill-others \"yarn serve\" \"npm-watch build\""
   },
   "author": "Robert Chen",
   "license": "ISC",
   "devDependencies": {
+    "concurrently": "^6.2.1",
     "eslint": "^7.30.0",
     "finalhandler": "^1.1.2",
+    "npm-watch": "^0.11.0",
     "serve-static": "^1.14.1"
   },
   "dependencies": {

@@ -4,6 +4,23 @@
 		<div class="sidebar--title"><a href="/blog">rob</a></div>
 		<div class="sidebar--title sidebar--title__second"><a href="/blog">blog</a></div>
 	</div>
+	<% function cleanSlug(slug) { %>
+		<% if (!/\-[0-9]$/.test(slug)) return slug; %>
+		<% return slug.substring(0, slug.length - 2); %>
+	<% } %>
+	<% function renderTOC(node, topNode=false) { %>
+		<div class="toc--section">
+			<div class="toc--title"><a class="<%= node.href || 'unclickable' %>" href="<%= node.href %>"><%= cleanSlug(node.slug) %></a></div>
+			<% for (const child of node.children) { %>
+				<% renderTOC(child) %>
+				<% if (topNode) { %>
+					<div class="toc--seperator"></div>
+				<% } %>
+			<% } %>
+		</div>
+	<% } %>
+	<div class="toc--padding"></div>
+	<% typeof toc !== 'undefined' && renderTOC(toc, true) %>
 	<div class="sidebar--expander"></div>
 	<a class="sidebar--link" href="/">robertchen.cc</a>
 	<a class="sidebar--link" href="https://twitter.com/NotDeGhost">twitter</a>

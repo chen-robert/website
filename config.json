@@ -5,7 +5,22 @@
     "postsPerPage": 500,
     "outputDir": "build",
     "publicDir": "public",
-    "path": "/blog"
+    "path": "/blog",
+		"toc": {
+			"bug-bounty": [
+				["npm-rce", "/2021/09/20/npm-rce"],
+				["github-pages-xss", "/2021/04/03/github-pages-xss"]
+			],
+			"chrome-sbx": [
+				["empires-and-deserts", "/2021/07/12/empires-and-deserts"],
+				["sbx-intro", "/2021/07/07/sbx-intro"],
+				["adult-csp", "/2021/02/07/adult-csp"]
+			],
+			"misc": [
+				["asus-rce", "/2021/03/31/asus-rce"],
+				["ssd-nov", "/2020/11/13/ssd-nov"]
+			]
+		}
   },
   "host": "robertchen.cc",
   "me": {

@@ -23,19 +23,18 @@ ops["png"] = async (data, filepath) => {
 ops["jpg"] = ops["png"];
 
 ops["html"] = async (data) => {
-  const $ = cheerio.load(data);
+	const $ = cheerio.load(data);
 
   $("img[src^='/']").each((idx, elem) => {
     const $elem = $(elem);
-    
-    const $pic = $("<picture/>");
 
+    const $pic = $("<picture/>");
 
     let $source = $("<source/>");
     $source.attr("srcset", $elem.attr("src").split(".").slice(0, -1) + ".webp");
     $source.attr("type", "image/webp");
     $pic.append($source);
-    
+
     $source = $("<source/>");
     $source.attr("srcset", $elem.attr("src"));
     $pic.append($source);
@@ -65,10 +64,10 @@ ops["css"] = async (data) => {
 ops["less"] = async (data, filepath) => {
   try {
     const { css } = await less.render(data, { paths: [path.dirname(filepath)] });
-    
+
     return ops["css"](css, filepath);
   } catch(e) {
-    console.log("skipping on less error: %s", filepath);
+    console.log("skipping on less error: %s", path.basename(filepath));
   }
 }
 
