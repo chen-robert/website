@@ -74,7 +74,7 @@ const setAboutBuffer = wrapper(async () => {
   }
 
   await appendBuffer({ text: "" });
-  await appendBuffer({ text: "Stuff I've Broke", subtitle: true });
+  await appendBuffer({ text: "Stuff I've Broken", subtitle: true });
   await appendBuffer({ text: `GitHub &#183; <a href="/blog/2021/04/03/github-pages-xss">Pages</a>, Codespaces` });
   await appendBuffer({ text: `ASUS &#183; <a href="/blog/2021/03/31/asus-rce">RT-AC68U</a>` });
   await appendBuffer({ text: `<a href="/vulns.txt">More</a>` });
