@@ -5,8 +5,13 @@
   "main": "index.js",
   "watch": {
     "build": {
-      "patterns": ["src", "public", "views", "posts"],
-			"extensions": "js,ejs,less,md",
+      "patterns": [
+        "src",
+        "public",
+        "views",
+        "posts"
+      ],
+      "extensions": "js,ejs,less,md",
       "ignore": "build"
     }
   },
